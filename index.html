@@ -411,27 +411,27 @@
     /* ─── INTELLIGENCE CARDS ────────────────────────── */
     .intel-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.25rem; }
     .intel-card {
-      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 14px; padding: 1.75rem; transition: border-color 0.2s;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.75rem; transition: all 0.25s;
     }
-    .intel-card:hover { border-color: rgba(255,255,255,0.16); }
+    .intel-card:hover { border-color: var(--crimson); transform: translateY(-2px); box-shadow: var(--shadow); }
     .intel-badge { display: inline-block; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; border-radius: 4px; padding: 0.15rem 0.5rem; margin-bottom: 0.75rem; font-family: var(--mono); }
     .intel-badge.operational { background: rgba(96,165,250,0.15); color: var(--term-blue); }
     .intel-badge.market { background: rgba(34,197,94,0.15); color: var(--term-green); }
     .intel-badge.retention { background: rgba(167,139,250,0.15); color: var(--term-purple); }
     .intel-badge.knowledge { background: rgba(234,179,8,0.15); color: var(--term-yellow); }
-    .intel-text { font-size: 0.87rem; color: rgba(255,255,255,0.7); line-height: 1.68; }
+    .intel-text { font-size: 0.87rem; color: var(--text-soft); line-height: 1.68; }
 
     /* ─── QUOTE SECTION ─────────────────────────────── */
-    .quote-section { background: #0c1018; padding: 6rem 0; text-align: center; }
+    .quote-section { background: var(--bg-soft); padding: 6rem 0; text-align: center; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .quote-inner { max-width: 760px; margin: 0 auto; padding: 0 2rem; }
     .quote-text {
-      font-size: clamp(1.2rem, 2.5vw, 1.65rem); line-height: 1.65; color: rgba(255,255,255,0.75);
+      font-size: clamp(1.2rem, 2.5vw, 1.65rem); line-height: 1.65; color: var(--text-soft);
       font-weight: 400; margin-bottom: 1.5rem;
     }
-    .quote-text em { font-style: italic; }
-    .quote-emphasis { font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 800; color: #f1f5f9; margin-top: 1.5rem; }
-    .quote-emphasis span { color: var(--crimson-mid); }
+    .quote-text em { font-style: italic; color: var(--text); }
+    .quote-emphasis { font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 800; color: var(--text); margin-top: 1.5rem; }
+    .quote-emphasis span { color: var(--crimson); }
 
     /* ─── CTA BAND ──────────────────────────────────── */
     .cta-band {
@@ -610,7 +610,7 @@
   </div>
 
   <!-- PROBLEM SECTION -->
-  <section class="section section-tinted">
+  <section class="section">
     <div class="container">
       <div class="section-label">The Problem</div>
       <h2 class="section-headline">Three Problems That Drain Every Recruiting Team.</h2>
@@ -711,7 +711,7 @@
   </section>
 
   <!-- TRIBUNE REVENUE MODEL -->
-  <section class="section">
+  <section class="section" style="display:none;">
     <div class="container" style="text-align:center;">
       <div class="section-label" style="justify-content:center;">How Tribune Gets Paid</div>
       <h2 class="section-headline" style="max-width:640px;margin:0 auto 0.75rem;">Tribune's fee is tied to the value we create.</h2>
@@ -845,7 +845,7 @@
   </section>
 
   <!-- KNOWLEDGE INTELLIGENCE -->
-  <section class="section section-tinted">
+  <section class="section section-alt">
     <div class="container">
       <div class="section-label">Knowledge Intelligence</div>
       <h2 class="section-headline">What the System Already Sees.</h2>
@@ -935,15 +935,12 @@
 ════════════════════════════════════════════════ -->
 <div x-show="tab === 'stack'" x-cloak>
 
-  <!-- Stack Hero -->
-  <section class="hero" style="min-height:52vh;">
-    <div class="hero-grid"></div>
-    <div class="hero-overlay"></div>
-    <div class="hero-orb o1"></div>
-    <div class="hero-content container" style="max-width:1120px;padding-top:5rem;padding-bottom:4rem;">
-      <div class="hero-eyebrow"><span>●</span> Solution Architecture</div>
-      <h1 class="hero-headline" style="font-size:clamp(1.8rem,4vw,3rem);">Four Layers That Connect Execution to Intelligence.</h1>
-      <p class="hero-sub">Already using a CRM? Tribune doesn't replace it. Tribune turns it into an agentic operating system.</p>
+  <!-- Stack Header (light) -->
+  <section style="background:#fff;padding:5rem 0 3.5rem;border-bottom:1px solid var(--border);">
+    <div class="container">
+      <div class="section-label">Solution Architecture</div>
+      <h1 style="font-size:clamp(1.9rem,4vw,3rem);font-weight:900;color:var(--text);letter-spacing:-0.04em;line-height:1.1;max-width:700px;margin-bottom:1rem;">Four Layers That Connect Execution to Intelligence.</h1>
+      <p style="font-size:1.05rem;color:var(--text-soft);max-width:560px;line-height:1.7;">Already using a CRM? Tribune doesn't replace it. Tribune turns it into an agentic operating system — layering intelligence and automation on top of the workflows you already have.</p>
     </div>
   </section>
 
@@ -1204,17 +1201,15 @@
 ════════════════════════════════════════════════ -->
 <div x-show="tab === 'nextsteps'" x-cloak>
 
-  <section class="hero" style="min-height:50vh;">
-    <div class="hero-grid"></div>
-    <div class="hero-overlay"></div>
-    <div class="hero-orb o1"></div>
-    <div class="hero-content container" style="max-width:1120px;padding-top:5rem;padding-bottom:4rem;">
-      <div class="hero-eyebrow"><span>●</span> Next Steps</div>
-      <h1 class="hero-headline" style="font-size:clamp(1.8rem,4vw,3rem);">The Full Tribune Platform</h1>
-      <p class="hero-sub">This presentation was prepared specifically for Valeo Resources. To learn more about Tribune, explore the full platform, or get in touch with Ryan and Jeff directly, visit tribuneinc.com.</p>
-      <div class="hero-actions">
-        <a href="https://tribuneinc.com" target="_blank" class="btn-primary" style="font-size:0.97rem;padding:0.85rem 1.85rem;">Visit tribuneinc.com →</a>
-        <a href="https://tribuneinc.com/builds/" target="_blank" class="btn-outline-white" style="font-size:0.97rem;padding:0.85rem 1.85rem;">See All Builds →</a>
+  <!-- Next Steps Header (light) -->
+  <section style="background:#fff;padding:5rem 0 3.5rem;border-bottom:1px solid var(--border);">
+    <div class="container">
+      <div class="section-label">Next Steps</div>
+      <h1 style="font-size:clamp(1.9rem,4vw,3rem);font-weight:900;color:var(--text);letter-spacing:-0.04em;line-height:1.1;max-width:700px;margin-bottom:1rem;">The Full Tribune Platform</h1>
+      <p style="font-size:1.05rem;color:var(--text-soft);max-width:560px;line-height:1.7;margin-bottom:2rem;">This presentation was prepared specifically for Valeo Resources. To learn more about Tribune, explore the full platform, or reach out to Ryan and Jeff directly.</p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+        <a href="https://tribuneinc.com" target="_blank" class="btn-primary" style="font-size:0.95rem;">Visit tribuneinc.com →</a>
+        <a href="https://tribuneinc.com/builds/" target="_blank" class="btn-outline" style="font-size:0.95rem;">See All Builds →</a>
       </div>
     </div>
   </section>
