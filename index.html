@@ -138,18 +138,22 @@
       position: relative; min-height: 90vh; display: flex; align-items: center;
       overflow: hidden; background: #0c1018;
     }
+    .hero-video {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      opacity: 0.52;
+    }
     .hero-grid {
       position: absolute; inset: 0; overflow: hidden;
       background-image:
-        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
       background-size: 64px 64px;
       animation: gridScroll 24s linear infinite;
     }
     @keyframes gridScroll { from { background-position: 0 0; } to { background-position: 64px 64px; } }
     .hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(160deg, rgba(12,16,24,0.75) 0%, rgba(12,16,24,0.35) 50%, rgba(12,16,24,0.70) 100%);
+      background: linear-gradient(160deg, rgba(12,16,24,0.65) 0%, rgba(12,16,24,0.30) 50%, rgba(12,16,24,0.70) 100%);
     }
     .hero-orb {
       position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.22;
@@ -204,16 +208,16 @@
     /* ═══════════════════════════════════════════════════
        STAT STRIP
     ═══════════════════════════════════════════════════ */
-    .stat-strip { background: #0f1521; border-bottom: 1px solid var(--border); }
+    .stat-strip { background: var(--bg); border-bottom: 1px solid var(--border); }
     .stat-grid {
       display: grid; grid-template-columns: repeat(3,1fr);
       border-left: 1px solid var(--border);
     }
     .stat-card {
       padding: 2.25rem 2rem; border-right: 1px solid var(--border);
-      position: relative; transition: background 0.2s;
+      position: relative; transition: background 0.2s; background: var(--bg-card);
     }
-    .stat-card:hover { background: #161f30; }
+    .stat-card:hover { background: var(--bg-soft); }
     .stat-card::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
       background: linear-gradient(90deg, var(--crimson), var(--crimson-mid));
@@ -227,7 +231,7 @@
        SECTIONS
     ═══════════════════════════════════════════════════ */
     .section { padding: 6rem 0; }
-    .section-alt { background: #111827; }
+    .section-alt { background: var(--bg-soft); }
     .section-tinted { background: linear-gradient(135deg, #141927 0%, #1a2035 60%, #111825 100%); }
     .section-tinted .section-label { color: rgba(196,30,58,0.9); }
     .section-tinted .section-headline { color: #f1f5f9; }
@@ -383,7 +387,7 @@
     /* ─── PHASE ROADMAP ─────────────────────────────── */
     .phase-roadmap { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin-top: 2.5rem; }
     .phase-card {
-      background: #111827; border: 1px solid var(--border);
+      background: var(--bg-card); border: 1px solid var(--border);
       border-radius: var(--radius-lg); padding: 1.75rem 1.5rem;
       position: relative; transition: all 0.25s;
     }
@@ -401,7 +405,7 @@
     .phase-card:nth-child(3) .phase-time { color: #8b5cf6; }
     .phase-name { font-size: 1.05rem; font-weight: 800; margin-bottom: 0.6rem; color: var(--text); }
     .phase-desc { font-size: 0.8rem; color: var(--text-soft); line-height: 1.65; margin-bottom: 1rem; }
-    .phase-win { font-size: 0.72rem; font-weight: 700; color: var(--text-soft); background: #0f1521; border-radius: 6px; padding: 0.4rem 0.7rem; }
+    .phase-win { font-size: 0.72rem; font-weight: 700; color: var(--text-soft); background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px; padding: 0.4rem 0.7rem; }
 
     /* ─── INTELLIGENCE CARDS ────────────────────────── */
     .intel-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.25rem; }
@@ -535,6 +539,9 @@
 
   <!-- HERO -->
   <section class="hero">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="https://res.cloudinary.com/dthdxjmgb/video/upload/v1785441262/valeo/hero-recruiting-job-interview.mp4" type="video/mp4">
+    </video>
     <div class="hero-grid"></div>
     <div class="hero-overlay"></div>
     <div class="hero-orb o1"></div>
