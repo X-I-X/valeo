@@ -16,17 +16,17 @@
       --crimson: #c41e3a;
       --crimson-dark: #9e1830;
       --crimson-mid: #e03555;
-      --crimson-bg: #fff0f2;
+      --crimson-bg: rgba(196,30,58,0.12);
       --navy: #0a0e1a;
       --navy-mid: #111827;
-      --bg: #ffffff;
-      --bg-soft: #f9fafb;
-      --bg-card: #ffffff;
-      --text: #0f172a;
-      --text-soft: #475569;
-      --text-dim: #94a3b8;
-      --border: #e2e8f0;
-      --border-mid: #cbd5e1;
+      --bg: #0a0e1a;
+      --bg-soft: #0f1521;
+      --bg-card: #111827;
+      --text: #f1f5f9;
+      --text-soft: #94a3b8;
+      --text-dim: #4b5563;
+      --border: #1e2d42;
+      --border-mid: #253347;
       --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
       --shadow: 0 4px 12px rgba(0,0,0,0.07), 0 1px 3px rgba(0,0,0,0.05);
       --shadow-lg: 0 20px 40px rgba(0,0,0,0.1), 0 8px 16px rgba(0,0,0,0.06);
@@ -65,9 +65,9 @@
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
       display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
       padding: 0 2rem; height: 68px;
-      background: rgba(255,255,255,0.94);
+      background: rgba(10,14,26,0.94);
       backdrop-filter: blur(16px) saturate(180%);
-      border-bottom: 1px solid rgba(226,232,240,0.8);
+      border-bottom: 1px solid rgba(30,45,66,0.8);
       transition: box-shadow 0.2s, border-color 0.2s;
     }
     .site-header.scrolled { box-shadow: 0 1px 20px rgba(0,0,0,0.08); border-color: var(--border); }
@@ -76,13 +76,13 @@
       text-decoration: none;
     }
     .header-logo-text {
-      font-size: 0.95rem; font-weight: 800; color: var(--text);
+      font-size: 0.95rem; font-weight: 800; color: #f1f5f9;
       letter-spacing: -0.01em; line-height: 1;
     }
     .header-logo-text .sep { color: var(--text-dim); font-weight: 300; padding: 0 0.15rem; }
     .header-logo-text .client { color: var(--text-soft); font-weight: 500; }
     .header-sub-line { font-size: 0.62rem; color: var(--text-dim); letter-spacing: 0.04em; margin-top: 0.15rem; font-family: var(--mono); }
-    .header-tabs { display: flex; gap: 0.2rem; background: var(--bg-soft); border-radius: 8px; padding: 0.2rem; }
+    .header-tabs { display: flex; gap: 0.2rem; background: rgba(15,21,33,0.8); border-radius: 8px; padding: 0.2rem; }
     .tab-btn {
       padding: 0.4rem 1rem; border-radius: 6px; border: none;
       background: transparent; font-family: var(--font); font-size: 0.84rem;
@@ -90,7 +90,7 @@
       transition: all 0.15s; white-space: nowrap;
     }
     .tab-btn:hover { color: var(--text); }
-    .tab-btn.active { background: var(--bg-card); color: var(--crimson); font-weight: 600; box-shadow: var(--shadow-sm); }
+    .tab-btn.active { background: #1e2d42; color: var(--crimson); font-weight: 600; box-shadow: var(--shadow-sm); }
     .header-cta { display: flex; align-items: center; justify-content: flex-end; }
 
     /* ─── BUTTONS ─────────────────────────────────────── */
@@ -204,7 +204,7 @@
     /* ═══════════════════════════════════════════════════
        STAT STRIP
     ═══════════════════════════════════════════════════ */
-    .stat-strip { background: var(--bg); border-bottom: 1px solid var(--border); }
+    .stat-strip { background: #0f1521; border-bottom: 1px solid var(--border); }
     .stat-grid {
       display: grid; grid-template-columns: repeat(3,1fr);
       border-left: 1px solid var(--border);
@@ -213,7 +213,7 @@
       padding: 2.25rem 2rem; border-right: 1px solid var(--border);
       position: relative; transition: background 0.2s;
     }
-    .stat-card:hover { background: var(--bg-soft); }
+    .stat-card:hover { background: #161f30; }
     .stat-card::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
       background: linear-gradient(90deg, var(--crimson), var(--crimson-mid));
@@ -227,7 +227,7 @@
        SECTIONS
     ═══════════════════════════════════════════════════ */
     .section { padding: 6rem 0; }
-    .section-alt { background: var(--bg-soft); }
+    .section-alt { background: #111827; }
     .section-tinted { background: linear-gradient(135deg, #141927 0%, #1a2035 60%, #111825 100%); }
     .section-tinted .section-label { color: rgba(196,30,58,0.9); }
     .section-tinted .section-headline { color: #f1f5f9; }
@@ -320,18 +320,32 @@
     .t-soft { color: var(--term-soft); }
     .t-bold { font-weight: 700; }
 
-    /* ─── VIDEO SECTION ────────────────────────────── */
-    .video-section { background: #0c1018; padding: 6rem 0; }
-    .video-section .section-label { color: rgba(196,30,58,0.9); }
-    .video-section .section-headline { color: #f1f5f9; }
-    .video-section .section-sub { color: rgba(255,255,255,0.62); }
-    .video-wrap {
-      max-width: 860px; margin: 0 auto;
-      border-radius: 16px; overflow: hidden;
-      box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 8px 24px rgba(0,0,0,0.4);
-      border: 1px solid rgba(255,255,255,0.08);
+    /* ─── VIDEO PILL + MODAL ────────────────────────── */
+    .video-pill {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      background: rgba(196,30,58,0.12); border: 1px solid rgba(196,30,58,0.35);
+      border-radius: 40px; padding: 0.6rem 1.1rem 0.6rem 0.75rem;
+      cursor: pointer; transition: all 0.2s; margin-top: 1.5rem;
     }
-    .video-wrap video { display: block; width: 100%; border-radius: 16px; }
+    .video-pill:hover { background: rgba(196,30,58,0.2); border-color: var(--crimson); transform: translateY(-1px); }
+    .video-pill-play {
+      width: 32px; height: 32px; background: var(--crimson); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.65rem; color: #fff; flex-shrink: 0;
+    }
+    .video-pill-label { font-size: 0.65rem; font-weight: 700; color: var(--crimson); text-transform: uppercase; letter-spacing: 0.08em; }
+    .video-pill-sub { font-size: 0.78rem; color: var(--text-soft); }
+    .video-modal {
+      display: none; position: fixed; inset: 0; z-index: 1000;
+      background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+      align-items: center; justify-content: center;
+    }
+    .video-modal.open { display: flex; }
+    .video-modal-inner { position: relative; width: 90%; max-width: 860px; }
+    .video-modal-close {
+      position: absolute; top: -40px; right: 0; background: transparent; border: none;
+      color: #fff; font-size: 1.4rem; cursor: pointer; padding: 0.5rem;
+    }
 
     /* ─── CALCULATOR ───────────────────────────────── */
     .calc-card {
@@ -369,7 +383,7 @@
     /* ─── PHASE ROADMAP ─────────────────────────────── */
     .phase-roadmap { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin-top: 2.5rem; }
     .phase-card {
-      background: var(--bg-card); border: 1px solid var(--border);
+      background: #111827; border: 1px solid var(--border);
       border-radius: var(--radius-lg); padding: 1.75rem 1.5rem;
       position: relative; transition: all 0.25s;
     }
@@ -387,7 +401,7 @@
     .phase-card:nth-child(3) .phase-time { color: #8b5cf6; }
     .phase-name { font-size: 1.05rem; font-weight: 800; margin-bottom: 0.6rem; color: var(--text); }
     .phase-desc { font-size: 0.8rem; color: var(--text-soft); line-height: 1.65; margin-bottom: 1rem; }
-    .phase-win { font-size: 0.72rem; font-weight: 700; color: var(--text-soft); background: var(--bg-soft); border-radius: 6px; padding: 0.4rem 0.7rem; }
+    .phase-win { font-size: 0.72rem; font-weight: 700; color: var(--text-soft); background: #0f1521; border-radius: 6px; padding: 0.4rem 0.7rem; }
 
     /* ─── INTELLIGENCE CARDS ────────────────────────── */
     .intel-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.25rem; }
@@ -440,6 +454,31 @@
     footer a:hover { color: rgba(255,255,255,0.8); }
     footer .footer-conf { font-size: 0.68rem; color: rgba(255,255,255,0.2); margin-top: 0.4rem; font-style: italic; }
 
+        /* ─── TEAM SECTION ────────────────────────────────── */
+    .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 800px; margin: 0 auto; }
+    .team-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2rem; }
+    .team-avatar { width: 64px; height: 64px; border-radius: 50%; background: var(--crimson); display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 1.25rem; }
+    .team-name { font-size: 1.05rem; font-weight: 800; margin-bottom: 0.25rem; color: var(--text); }
+    .team-title { font-size: 0.78rem; color: var(--crimson); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; }
+    .team-bio { font-size: 0.84rem; color: var(--text-soft); line-height: 1.7; margin-bottom: 1rem; }
+    .team-linkedin { font-size: 0.78rem; color: var(--crimson); font-weight: 600; text-decoration: none; }
+    .team-linkedin:hover { text-decoration: underline; }
+
+    /* ─── TRIBUNE REVENUE MODEL ─────────────────────────────── */
+    .revenue-tabs { display: flex; gap: 0; border: 1px solid var(--term-border); border-radius: 8px; overflow: hidden; margin-bottom: 1.5rem; width: fit-content; }
+    .rev-tab-btn {
+      padding: 0.5rem 1.25rem; font-family: var(--mono); font-size: 0.75rem;
+      font-weight: 600; color: var(--term-soft); background: transparent; border: none;
+      cursor: pointer; transition: all 0.15s; text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .rev-tab-btn.active { background: var(--crimson); color: #fff; }
+    .rev-tab-btn:hover:not(.active) { color: var(--term-text); background: rgba(255,255,255,0.05); }
+    .rev-explainer { background: rgba(0,0,0,0.25); border: 1px solid var(--term-border); border-radius: 10px; padding: 1.25rem; margin-top: 1.5rem; }
+    .rev-explainer ul { list-style: none; padding: 0; }
+    .rev-explainer ul li { font-size: 0.78rem; color: rgba(255,255,255,0.55); line-height: 1.7; padding: 0.2rem 0; }
+    .rev-explainer ul li::before { content: '→ '; color: var(--crimson); }
+    .slider-hint { font-size: 0.7rem; color: var(--term-soft); margin-top: 0.3rem; font-style: italic; }
+
     /* ─── RESPONSIVE ────────────────────────────────── */
     @media (max-width: 960px) {
       .prob-grid { grid-template-columns: 1fr 1fr; }
@@ -455,6 +494,7 @@
       .site-header { padding: 0 1rem; grid-template-columns: 1fr auto; }
       .header-cta { display: none; }
       .container { padding: 0 1.25rem; }
+      .team-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -482,7 +522,7 @@
     <button class="tab-btn" :class="{ active: tab === 'nextsteps' }" @click="tab='nextsteps'; window.scrollTo({top:0,behavior:'smooth'})">Next Steps</button>
   </div>
   <div class="header-cta">
-    <a href="https://calendly.com/ryan-maxximus/30min" target="_blank" class="btn-primary" style="font-size:0.82rem;padding:0.5rem 1.1rem;">Book a Call →</a>
+    <a href="https://calendly.com/ryan-maxximus/30min" target="_blank" class="btn-primary" style="font-size:0.82rem;padding:0.5rem 1.1rem;">Talk to Ryan →</a>
   </div>
 </header>
 
@@ -527,7 +567,7 @@
       </p>
       <div class="hero-actions">
         <a href="https://calendly.com/ryan-maxximus/30min" target="_blank" class="btn-primary" style="font-size:0.97rem;padding:0.85rem 1.85rem;">
-          Book a Call with Ryan →
+          Talk to Ryan →
         </a>
         <a href="https://tribuneinc.com" target="_blank" class="btn-outline-white" style="font-size:0.97rem;padding:0.85rem 1.85rem;">
           View Tribune Platform
@@ -593,26 +633,15 @@
     </div>
   </section>
 
-  <!-- VIDEO SECTION -->
-  <section class="video-section">
-    <div class="container">
-      <div class="section-label">From the Founder</div>
-      <h2 class="section-headline" style="color:#f1f5f9;max-width:640px;">Built for the way Valeo already works.</h2>
-      <p class="section-sub" style="margin-bottom:2.5rem;">Tribune doesn't reimagine your business. It eliminates the work surrounding your relationships — so your recruiters spend every hour on the calls that close placements.</p>
-      <div class="video-wrap">
-        <video
-          controls
-          muted
-          playsinline
-          preload="metadata"
-          style="width:100%;display:block;border-radius:14px;"
-          x-intersect.once="$el.play()"
-        >
-          <source src="https://res.cloudinary.com/dthdxjmgb/video/upload/v1785439055/marcus-valeo-tribune-cropped_owuird.mp4" type="video/mp4">
-        </video>
-      </div>
-    </div>
-  </section>
+  <!-- VIDEO MODAL (lightbox) -->
+<div class="video-modal" id="videoModal" onclick="closeVideoModal(event)">
+  <div class="video-modal-inner">
+    <button class="video-modal-close" onclick="closeVideoModal()">✕</button>
+    <video id="modalVideo" controls style="width:100%;border-radius:12px;max-height:80vh;">
+      <source src="https://res.cloudinary.com/dthdxjmgb/video/upload/v1785439055/marcus-valeo-tribune-cropped_owuird.mp4" type="video/mp4">
+    </video>
+  </div>
+</div>
 
   <!-- PLACEMENT REVENUE CALCULATOR -->
   <section class="section" style="background:#0a0e1a;">
@@ -636,6 +665,7 @@
               <span class="slider-val" x-text="recruiters"></span>
             </div>
             <input type="range" class="calc-slider" min="1" max="20" x-model="recruiters">
+            <div class="slider-hint">Industry standard: 5 for a mid-size regional firm</div>
           </div>
           <div class="slider-group">
             <div class="slider-label">
@@ -643,6 +673,7 @@
               <span class="slider-val" x-text="'$' + Number(fee).toLocaleString('en-US')"></span>
             </div>
             <input type="range" class="calc-slider" min="5000" max="30000" step="500" x-model="fee">
+            <div class="slider-hint">Industry standard: $12,000 for BH clinical roles</div>
           </div>
           <div class="slider-group">
             <div class="slider-label">
@@ -650,6 +681,7 @@
               <span class="slider-val" x-text="extra"></span>
             </div>
             <input type="range" class="calc-slider" min="1" max="5" x-model="extra">
+            <div class="slider-hint">Industry standard: conservative estimate with automation</div>
           </div>
           <div class="calc-output">
             <div class="calc-output-row">
@@ -664,6 +696,108 @@
               <span class="calc-output-label">Additional annual revenue</span>
               <span class="calc-output-val annual" x-text="fmt(annualRev)"></span>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRIBUNE REVENUE MODEL -->
+  <section class="section" style="background:#0f1521;">
+    <div class="container" style="text-align:center;">
+      <div class="section-label" style="justify-content:center;">How Tribune Gets Paid</div>
+      <h2 class="section-headline" style="color:#f1f5f9;max-width:640px;margin:0 auto 0.75rem;">Tribune's fee is tied to the value we create.</h2>
+      <p style="font-size:0.92rem;color:rgba(255,255,255,0.6);line-height:1.7;margin-bottom:2rem;max-width:640px;margin-left:auto;margin-right:auto;">The more we automate and the more placements your team closes, the more we earn together.</p>
+      <div x-data="{
+        revTab: 'performance',
+        share: 25,
+        monthlyFee: 3000,
+        hybridShare: 10,
+        get additionalRevFromCalc() { return 5 * 2 * 12000; },
+        get tribuneEarns() { return Math.round(this.additionalRevFromCalc * (this.share / 100)); },
+        get hybridTotal() { return this.monthlyFee + Math.round(this.additionalRevFromCalc * (this.hybridShare / 100)); },
+        get shareLabel() {
+          if (this.share <= 17) return 'Low — typically paired with $3,000–5,000/mo platform fee';
+          if (this.share <= 30) return 'Standard — no monthly platform fee';
+          return 'High-performance — zero upfront, zero monthly, pure revenue share';
+        },
+        fmt(n) { return '$' + n.toLocaleString('en-US'); }
+      }" style="margin-top:1rem;">
+        <div class="calc-card" style="text-align:left;">
+          <div class="revenue-tabs">
+            <button class="rev-tab-btn" :class="{ active: revTab === 'performance' }" @click="revTab = 'performance'">Performance Share</button>
+            <button class="rev-tab-btn" :class="{ active: revTab === 'hybrid' }" @click="revTab = 'hybrid'">Hybrid</button>
+          </div>
+
+          <!-- Performance Share Tab -->
+          <div x-show="revTab === 'performance'">
+            <div class="slider-group">
+              <div class="slider-label">
+                <span>Tribune revenue share %</span>
+                <span class="slider-val" x-text="share + '%'"></span>
+              </div>
+              <input type="range" class="calc-slider" min="15" max="40" step="1" x-model="share">
+              <div class="slider-hint" x-text="shareLabel"></div>
+            </div>
+            <div class="calc-output">
+              <div class="calc-output-row">
+                <span class="calc-output-label">Share % applied to additional revenue</span>
+                <span class="calc-output-val" x-text="share + '%'"></span>
+              </div>
+              <div class="calc-output-row">
+                <span class="calc-output-label">Est. additional revenue (5 recruiters × 2 placements × $12k)</span>
+                <span class="calc-output-val" x-text="fmt(additionalRevFromCalc)"></span>
+              </div>
+              <div class="calc-output-row">
+                <span class="calc-output-label">Tribune earns / mo at this share</span>
+                <span class="calc-output-val annual" x-text="fmt(tribuneEarns)"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hybrid Tab -->
+          <div x-show="revTab === 'hybrid'">
+            <div class="slider-group">
+              <div class="slider-label">
+                <span>Monthly platform fee</span>
+                <span class="slider-val" x-text="fmt(monthlyFee)"></span>
+              </div>
+              <input type="range" class="calc-slider" min="1500" max="8000" step="250" x-model="monthlyFee">
+              <div class="slider-hint">Most common: $3,000/mo</div>
+            </div>
+            <div class="slider-group">
+              <div class="slider-label">
+                <span>Revenue share %</span>
+                <span class="slider-val" x-text="hybridShare + '%'"></span>
+              </div>
+              <input type="range" class="calc-slider" min="5" max="20" step="1" x-model="hybridShare">
+              <div class="slider-hint">Hybrid default: 10%</div>
+            </div>
+            <div class="calc-output">
+              <div class="calc-output-row">
+                <span class="calc-output-label">Fixed monthly fee</span>
+                <span class="calc-output-val" x-text="fmt(monthlyFee)"></span>
+              </div>
+              <div class="calc-output-row">
+                <span class="calc-output-label">Revenue share on additional placements</span>
+                <span class="calc-output-val" x-text="fmt(Math.round(additionalRevFromCalc * (hybridShare / 100)))"></span>
+              </div>
+              <div class="calc-output-row">
+                <span class="calc-output-label">Tribune total est. / mo</span>
+                <span class="calc-output-val annual" x-text="fmt(hybridTotal)"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="rev-explainer">
+            <p style="font-size:0.75rem;font-weight:700;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.75rem;">What determines the %</p>
+            <ul>
+              <li>Lower % → higher monthly platform fee, faster ROI certainty for Tribune</li>
+              <li>Higher % → no/low monthly fee, pure upside alignment, bet on mutual success</li>
+              <li>Contract length: 6-month engagement → lower %; 18-month → higher upside model</li>
+              <li>Placement volume: &lt;5/mo → hybrid likely; &gt;10/mo → performance share makes sense</li>
+              <li>Complexity: RPO (high) → hybrid; Direct hire only → performance share</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -738,6 +872,38 @@
         Every relationship Rob's team has built over 20 years is an asset. Tribune makes sure those relationships are never lost to a missed follow-up, a cold pipeline, or a candidate who fell through the cracks because the team was stretched thin.
       </p>
       <div class="quote-emphasis">The goal: <span>same team, twice the placements.</span></div>
+      <!-- Video pill -->
+      <div class="video-pill" id="videoPill" onclick="openVideoModal()">
+        <div class="video-pill-play">▶</div>
+        <div class="video-pill-text">
+          <div class="video-pill-label">FROM MARCUS</div>
+          <div class="video-pill-sub">60 seconds · watch now</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM SECTION -->
+  <section class="section" style="background:#0a0e1a;">
+    <div class="container">
+      <div class="section-label">Meet the Team</div>
+      <h2 class="section-headline" style="color:#f1f5f9;max-width:640px;">The People Behind Tribune.</h2>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar">RP</div>
+          <div class="team-name">Ryan Poole</div>
+          <div class="team-title">Co-Founder &amp; CEO, Tribune Inc.</div>
+          <p class="team-bio">Ryan Poole is a builder and operator based in West Palm Beach, Florida. He co-founded Tribune Inc. to solve the same operational problems he faced running his own AI ventures — too much manual work, not enough organizational intelligence. Before Tribune, Ryan built MaxximusAI, an AI coaching platform. He runs Tribune on the same systems Tribune sells.</p>
+          <a href="https://www.linkedin.com/in/ryan-poole-wealthcoach/" target="_blank" class="team-linkedin">LinkedIn →</a>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">JR</div>
+          <div class="team-name">Jeff Reinhold</div>
+          <div class="team-title">Co-Founder &amp; CTO, Tribune Inc.</div>
+          <p class="team-bio">Jeff Reinhold is an engineer and systems builder based in West Palm Beach, Florida. He built the AI infrastructure that powers Tribune — the Senate deliberation layer, the Mission Control terminal, and the agent orchestration framework. Before Tribune, Jeff built the Infinite Agent system and the video production pipeline behind multiple AI media ventures. Tribune runs on what Jeff built.</p>
+          <a href="https://www.linkedin.com/in/jeffreyreinhold/" target="_blank" class="team-linkedin">LinkedIn →</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -747,8 +913,8 @@
       <h2>Ready to see it in Valeo's workflow?</h2>
       <p>Ryan will walk through the full system live. 30 minutes. No pitch deck.</p>
       <div class="cta-band-actions">
-        <a href="https://calendly.com/ryan-maxximus/30min" target="_blank" class="btn-white">Book a Call with Ryan →</a>
-        <a href="https://tribuneinc.com" target="_blank" class="btn-outline-white">View Tribune Platform</a>
+        <a href="https://calendly.com/ryan-maxximus/30min" target="_blank" class="btn-white">Talk to Ryan →</a>
+        <a href="mailto:ryan@tribuneinc.com" class="btn-outline-white">Reach Out to Tribune →</a>
       </div>
       <p class="cta-affiliate">
         There's a second conversation worth having — how Valeo's network could accelerate Tribune's growth in behavioral health. If that interests you, let's make time for it.<br>
@@ -867,8 +1033,8 @@
       <h2>Ready to see it in Valeo's workflow?</h2>
       <p>Ryan will walk through the full system live. 30 minutes. No pitch deck.</p>
       <div class="cta-band-actions">
-        <a href="https://calendly.com/ryan-maxximus/30min" target="_blank" class="btn-white">Book a Call with Ryan →</a>
-        <a href="https://tribuneinc.com" target="_blank" class="btn-outline-white">View Tribune Platform</a>
+        <a href="https://calendly.com/ryan-maxximus/30min" target="_blank" class="btn-white">Talk to Ryan →</a>
+        <a href="mailto:ryan@tribuneinc.com" class="btn-outline-white">Reach Out to Tribune →</a>
       </div>
     </div>
   </section>
@@ -902,6 +1068,7 @@
         <button class="term-tab-btn" :class="{ active: termTab === 'pipeline' }" @click="termTab = 'pipeline'">Pipeline Overview</button>
         <button class="term-tab-btn" :class="{ active: termTab === 'recruiter' }" @click="termTab = 'recruiter'">Recruiter Dashboard</button>
         <button class="term-tab-btn" :class="{ active: termTab === 'bd' }" @click="termTab = 'bd'">BD Intelligence Feed</button>
+        <button class="term-tab-btn" :class="{ active: termTab === 'morning' }" @click="termTab = 'morning'">Morning Briefing</button>
       </div>
       <!-- Terminal body -->
       <div class="term-body">
@@ -973,6 +1140,49 @@
   <span class="t-green">✅</span>  Weekly BD briefing: Sent Monday 07/28 at 8:00 AM</pre>
         </div>
 
+        <!-- Tab 4: Morning Briefing -->
+        <div class="term-tab-panel" :class="{ active: termTab === 'morning' }">
+<pre class="term-pre"><span class="t-bold t-blue">ROB'S MORNING BRIEFING</span>  —  <span class="t-soft">THURSDAY JULY 30, 2026  —  8:00 AM</span>
+<span class="t-soft">═══════════════════════════════════════════════════════════════</span>
+
+ Good morning. Here's what needs your attention today.
+
+ <span class="t-bold">TOP PRIORITY</span>
+ <span class="t-soft">─────────────────────────────────────────────────────────────</span>
+  <span class="t-red">🔴 Delray Beach Recovery — Program Director — Day 61</span>
+     No contact in 9 days. Last candidate submitted: rejected.
+     <span class="t-yellow">ACTION: Call hiring manager before 11am. Draft ready.</span>
+
+  <span class="t-red">🔴 WPB Psychiatric Associates — RN Psych — Day 47</span>
+     3 candidates submitted. 0 responses. Role going cold.
+     <span class="t-yellow">ACTION: Re-confirm client is still hiring. Script ready.</span>
+
+ <span class="t-bold">THIS WEEK'S PIPELINE</span>
+ <span class="t-soft">─────────────────────────────────────────────────────────────</span>
+  Placements closed:        <span class="t-green">3</span>   (↑ vs. 2 last week)
+  Candidates submitted:     <span class="t-blue">6</span>
+  New candidates sourced:  <span class="t-blue">19</span>
+  Client calls completed:  <span class="t-blue">11</span>
+  Follow-ups sent (auto):  <span class="t-green">47</span>  ← Tribune handled these
+
+ <span class="t-bold">BD INTEL — ACT TODAY</span>
+ <span class="t-soft">─────────────────────────────────────────────────────────────</span>
+  <span class="t-green">🟢 Oasis Behavioral Health (Boca) posted 3 new roles</span>
+     → No Valeo relationship. Draft outreach ready for Rob.
+
+  <span class="t-yellow">🟡 Pine Grove Center — Key contact Dr. Holloway</span>
+     → 38 days since last touch. Check-in message drafted.
+
+ <span class="t-bold">WEEKLY BD BRIEFING</span>
+ <span class="t-soft">─────────────────────────────────────────────────────────────</span>
+  New BH clinic job postings (South FL, last 7 days): <span class="t-blue">11</span>
+  Clinics with no Valeo relationship posting jobs:     <span class="t-yellow"> 6</span>
+  Existing clients with growing open role count:       <span class="t-green"> 3</span>
+  Placements approaching 90-day check-in window:       <span class="t-yellow"> 4</span>
+
+  Next BD briefing: <span class="t-soft">Monday Aug 4 at 8:00 AM</span> <span class="t-green">✓ Scheduled</span></pre>
+        </div>
+
       </div><!-- /term-body -->
     </div><!-- /term-outer -->
   </div>
@@ -980,7 +1190,7 @@
   <!-- CTA under terminal -->
   <div class="container" style="text-align:center;margin-top:3rem;">
     <p style="font-size:0.92rem;color:var(--term-soft);margin-bottom:1.5rem;">This is what Valeo's team would see every morning. Every alert. Every priority. Every draft outreach.</p>
-    <a href="https://calendly.com/ryan-maxximus/30min" target="_blank" class="btn-primary" style="font-size:0.97rem;padding:0.85rem 1.85rem;">Book a Demo with Ryan →</a>
+    <a href="https://calendly.com/ryan-maxximus/30min" target="_blank" class="btn-primary" style="font-size:0.97rem;padding:0.85rem 1.85rem;">Talk to Ryan →</a>
   </div>
 </div><!-- /terminal -->
 
@@ -999,8 +1209,8 @@
       <h1 class="hero-headline" style="font-size:clamp(1.8rem,4vw,3rem);">Ready to See Tribune in Valeo's Workflow?</h1>
       <p class="hero-sub">One 30-minute call. Ryan walks through exactly how the stack maps to Valeo's existing process. No pitch deck. No slides. A live walkthrough.</p>
       <div class="hero-actions">
-        <a href="https://calendly.com/ryan-maxximus/30min" target="_blank" class="btn-primary" style="font-size:0.97rem;padding:0.85rem 1.85rem;">Book a Call with Ryan →</a>
-        <a href="https://tribuneinc.com" target="_blank" class="btn-outline-white" style="font-size:0.97rem;padding:0.85rem 1.85rem;">View Tribune Platform</a>
+        <a href="https://calendly.com/ryan-maxximus/30min" target="_blank" class="btn-primary" style="font-size:0.97rem;padding:0.85rem 1.85rem;">Talk to Ryan →</a>
+        <a href="https://tribuneinc.com" target="_blank" class="btn-outline-white" style="font-size:0.97rem;padding:0.85rem 1.85rem;">Reach Out to Tribune →</a>
       </div>
     </div>
   </section>
@@ -1051,8 +1261,8 @@
       <h2>Ready to see it in Valeo's workflow?</h2>
       <p>Ryan will walk through the full system live. 30 minutes. No pitch deck.</p>
       <div class="cta-band-actions">
-        <a href="https://calendly.com/ryan-maxximus/30min" target="_blank" class="btn-white">Book a Call with Ryan →</a>
-        <a href="https://tribuneinc.com" target="_blank" class="btn-outline-white">View Tribune Platform</a>
+        <a href="https://calendly.com/ryan-maxximus/30min" target="_blank" class="btn-white">Talk to Ryan →</a>
+        <a href="mailto:ryan@tribuneinc.com" class="btn-outline-white">Reach Out to Tribune →</a>
       </div>
       <p class="cta-affiliate">
         Interested in a partnership conversation? Same link — just mention it when you book.<br>
@@ -1068,7 +1278,7 @@
 <!-- ════════ FOOTER ════════ -->
 <footer>
   <p>Confidential — Prepared for Valeo Resources · July 2026</p>
-  <p>© 2026 Tribune Inc. · <a href="https://tribuneinc.com" target="_blank">tribuneinc.com</a></p>
+  <p>© 2026 Tribune Inc. · <a href="https://tribuneinc.com" target="_blank">tribuneinc.com</a> · <a href="mailto:ryan@tribuneinc.com">ryan@tribuneinc.com</a></p>
   <p class="footer-conf">This presentation is intended solely for Valeo Resources leadership.</p>
 </footer>
 
@@ -1080,6 +1290,19 @@
       if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
     });
   });
+
+  // Video lightbox
+  function openVideoModal() {
+    document.getElementById('videoModal').classList.add('open');
+    document.getElementById('modalVideo').play();
+  }
+  function closeVideoModal(e) {
+    if (!e || e.target === document.getElementById('videoModal') || (e.currentTarget && e.currentTarget.classList.contains('video-modal-close'))) {
+      document.getElementById('videoModal').classList.remove('open');
+      document.getElementById('modalVideo').pause();
+      document.getElementById('modalVideo').currentTime = 0;
+    }
+  }
 </script>
 </body>
 </html>
