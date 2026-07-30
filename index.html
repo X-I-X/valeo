@@ -544,6 +544,130 @@
       .container { padding: 0 1.25rem; }
       .team-grid { grid-template-columns: 1fr; }
     }
+
+    /* ─── MOBILE RESPONSIVE (768px) ────────────────── */
+    @media (max-width: 768px) {
+
+      /* Header / Nav */
+      .site-header {
+        grid-template-columns: 1fr auto;
+        height: auto;
+        padding: 0.6rem 1rem;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+      .header-tabs {
+        grid-column: 1 / -1;
+        order: 3;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+        padding: 0.25rem;
+        scrollbar-width: none;
+        justify-content: flex-start;
+      }
+      .header-tabs::-webkit-scrollbar { display: none; }
+      .tab-btn { padding: 0.35rem 0.75rem; font-size: 0.78rem; }
+      .tab-btn img { height: 22px !important; }
+      .header-cta { display: none; }
+      .page-body { padding-top: 90px; }
+
+      /* Hero */
+      .hero { min-height: 85vh; }
+      .hero-content {
+        padding: 3.5rem 1.25rem 3rem;
+        max-width: 100%;
+      }
+      .hero-headline { font-size: clamp(1.6rem, 6vw, 2rem); letter-spacing: -0.025em; }
+      .hero-sub { font-size: 0.96rem; }
+      .hero-badge { display: none; }
+      .hero-actions { flex-direction: column; gap: 0.75rem; }
+      .hero-actions .btn-primary,
+      .hero-actions .btn-outline-white { width: 100%; text-align: center; justify-content: center; font-size: 0.9rem; padding: 0.75rem 1.25rem; }
+
+      /* Stat strip */
+      .stat-grid {
+        grid-template-columns: 1fr;
+        border-left: none;
+      }
+      .stat-card {
+        border: 1px solid var(--border);
+        border-right: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        margin-bottom: 0.75rem;
+      }
+      .stat-value { font-size: 2.2rem; }
+
+      /* Sections */
+      .section { padding: 3.5rem 0; }
+      .section-headline { font-size: clamp(1.4rem, 5vw, 1.9rem); }
+
+      /* Problem grid */
+      .prob-grid { grid-template-columns: 1fr; gap: 1rem; }
+
+      /* Layer architecture */
+      .layer-item { grid-template-columns: 44px 1fr; gap: 1rem; padding: 1.5rem 0; }
+
+      /* Phase roadmap */
+      .phase-roadmap { grid-template-columns: 1fr; gap: 1rem; }
+
+      /* Intelligence / Knowledge cards */
+      .intel-grid { grid-template-columns: 1fr; gap: 1rem; }
+
+      /* Team grid */
+      .team-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+
+      /* Quote / Marcus video section */
+      .quote-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 0 1.25rem;
+      }
+      .video-card { max-width: 100%; width: 100%; }
+
+      /* Terminal tabs */
+      .term-tabs-bar {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+        scrollbar-width: none;
+        flex-wrap: nowrap;
+      }
+      .term-tabs-bar::-webkit-scrollbar { display: none; }
+      .term-tab-btn { flex-shrink: 0; font-size: 0.66rem; padding: 0.55rem 0.9rem; }
+      .term-body { padding: 1rem; font-size: 0.68rem; min-height: 300px; }
+      pre.term-pre { font-size: 0.62rem; }
+
+      /* Calculator */
+      .calc-card { padding: 1.5rem 1rem; }
+      .slider-label { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
+      .slider-val { font-size: 0.85rem; }
+      input[type=range].calc-slider { width: 100%; }
+      .calc-output-row { flex-direction: column; align-items: flex-start; gap: 0.2rem; }
+      .calc-output-val { font-size: 0.95rem; }
+      .calc-output-val.annual { font-size: 1.15rem; }
+
+      /* Revenue tabs */
+      .revenue-tabs { width: 100%; }
+      .rev-tab-btn { flex: 1; text-align: center; font-size: 0.7rem; padding: 0.5rem 0.6rem; }
+
+      /* CTA band buttons */
+      .cta-band-actions { flex-direction: column; align-items: center; gap: 0.75rem; }
+      .cta-band-actions .btn-white,
+      .cta-band-actions .btn-outline-white { width: 100%; max-width: 320px; justify-content: center; }
+
+      /* Next Steps 3-col grid */
+      [style*="grid-template-columns:repeat(3,1fr)"] {
+        grid-template-columns: 1fr !important;
+      }
+
+      /* Typography clamp override */
+      h1, .hero-headline { word-break: break-word; }
+
+      /* Footer */
+      footer { padding: 1.75rem 1rem; }
+      footer p { font-size: 0.72rem; }
+    }
   </style>
 </head>
 <body x-data="{ tab: 'overview', termTab: 'pipeline', scrolled: false }"
@@ -565,9 +689,9 @@
   </div>
   <div class="header-tabs">
     <button class="tab-btn" :class="{ active: tab === 'overview' }" @click="tab='overview'; window.scrollTo({top:0,behavior:'smooth'})">Overview</button>
-    <button class="tab-btn" :class="{ active: tab === 'stack' }" @click="tab='stack'; window.scrollTo({top:0,behavior:'smooth'})">The Stack</button>
+    <button class="tab-btn" :class="{ active: tab === 'stack' }" @click="tab='stack'; window.scrollTo({top:0,behavior:'smooth'})"><img src="https://res.cloudinary.com/dthdxjmgb/image/upload/v1785444383/h1_sdqfay.png" alt="The Stack" style="height:28px;width:auto;vertical-align:middle;"></button>
     <button class="tab-btn" :class="{ active: tab === 'terminal' }" @click="tab='terminal'; window.scrollTo({top:0,behavior:'smooth'})">Live Terminal</button>
-    <button class="tab-btn" :class="{ active: tab === 'nextsteps' }" @click="tab='nextsteps'; window.scrollTo({top:0,behavior:'smooth'})">Next Steps</button>
+    <button class="tab-btn" :class="{ active: tab === 'nextsteps' }" @click="tab='nextsteps'; window.scrollTo({top:0,behavior:'smooth'})"><img src="https://res.cloudinary.com/dthdxjmgb/image/upload/v1785444383/h2_p8oljz.png" alt="Next Steps" style="height:28px;width:auto;vertical-align:middle;"></button>
   </div>
   <div class="header-cta">
     <a href="https://tribuneinc.com" target="_blank" class="btn-primary" style="font-size:0.82rem;padding:0.5rem 1.1rem;">tribuneinc.com →</a>
@@ -649,6 +773,7 @@
           <div class="stat-label">cost of an open seat to a behavioral health clinic</div>
         </div>
       </div>
+      <p style="text-align:center;font-size:0.78rem;color:#94a3b8;margin-top:0.5rem;padding-bottom:1.5rem;">Figures based on industry research benchmarks and used here as illustrative examples. Actual numbers will be confirmed against Valeo's own data.</p>
     </div>
   </div>
 
@@ -881,7 +1006,7 @@
           <div class="phase-time">Weeks 13+</div>
           <div class="phase-name">BD Engine + Full Intelligence</div>
           <div class="phase-desc">Talent Intelligence Layer live. BD signal detection running. Rob's weekly briefing automated. Valeo's 20 years of placement history transformed into a living competitive advantage.</div>
-          <div class="phase-win">🎯 20,000-case equivalent trajectory begins</div>
+          <div class="phase-win">🎯 Valeo's full 20-year placement history transformed into a living competitive advantage</div>
         </div>
       </div>
     </div>
@@ -1078,7 +1203,7 @@
           <div class="phase-time">Weeks 13+</div>
           <div class="phase-name">BD Engine + Full Intelligence</div>
           <div class="phase-desc">Talent Intelligence Layer live. BD signal detection running. Rob's weekly briefing automated. Valeo's 20 years transformed into a living competitive advantage.</div>
-          <div class="phase-win">🎯 20,000-case equivalent trajectory begins</div>
+          <div class="phase-win">🎯 Valeo's full 20-year placement history transformed into a living competitive advantage</div>
         </div>
       </div>
     </div>
