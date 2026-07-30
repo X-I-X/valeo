@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tribune × Valeo Resources — Healthcare Staffing AI Platform</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js" defer></script>
+  <style>
+    /* ─── RESET ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --crimson: #c41e3a;
+      --crimson-dark: #9e1830;
+      --crimson-mid: #e03555;
+      --crimson-bg: #fff0f2;
+      --navy: #0a0e1a;
+      --navy-mid: #111827;
+      --bg: #ffffff;
+      --bg-soft: #f9fafb;
+      --bg-card: #ffffff;
+      --text: #0f172a;
+      --text-soft: #475569;
+      --text-dim: #94a3b8;
+      --border: #e2e8f0;
+      --border-mid: #cbd5e1;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow: 0 4px 12px rgba(0,0,0,0.07), 0 1px 3px rgba(0,0,0,0.05);
+      --shadow-lg: 0 20px 40px rgba(0,0,0,0.1), 0 8px 16px rgba(0,0,0,0.06);
+      --shadow-crimson: 0 8px 24px rgba(196,30,58,0.2);
+      --radius: 10px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --font: 'Inter', -apple-system, sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+      /* Terminal */
+      --term-bg: #090d15;
+      --term-surface: #0f1621;
+      --term-surface2: #141d2b;
+      --term-border: #1e2d42;
+      --term-green: #22c55e;
+      --term-yellow: #eab308;
+      --term-red: #ef4444;
+      --term-blue: #60a5fa;
+      --term-purple: #a78bfa;
+      --term-text: #e2e8f0;
+      --term-soft: #64748b;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
+    [x-cloak] { display: none !important; }
+
+    /* ─── TYPOGRAPHY ─────────────────────────────────── */
+    .grad-text {
+      background: linear-gradient(135deg, var(--crimson) 0%, #e8174f 50%, #c41e3a 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ─── HEADER ─────────────────────────────────────── */
+    .site-header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+      padding: 0 2rem; height: 68px;
+      background: rgba(255,255,255,0.94);
+      backdrop-filter: blur(16px) saturate(180%);
+      border-bottom: 1px solid rgba(226,232,240,0.8);
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .site-header.scrolled { box-shadow: 0 1px 20px rgba(0,0,0,0.08); border-color: var(--border); }
+    .header-logo {
+      display: flex; align-items: center; gap: 0.65rem; cursor: pointer;
+      text-decoration: none;
+    }
+    .header-logo-text {
+      font-size: 0.95rem; font-weight: 800; color: var(--text);
+      letter-spacing: -0.01em; line-height: 1;
+    }
+    .header-logo-text .sep { color: var(--text-dim); font-weight: 300; padding: 0 0.15rem; }
+    .header-logo-text .client { color: var(--text-soft); font-weight: 500; }
+    .header-sub-line { font-size: 0.62rem; color: var(--text-dim); letter-spacing: 0.04em; margin-top: 0.15rem; font-family: var(--mono); }
+    .header-tabs { display: flex; gap: 0.2rem; background: var(--bg-soft); border-radius: 8px; padding: 0.2rem; }
+    .tab-btn {
+      padding: 0.4rem 1rem; border-radius: 6px; border: none;
+      background: transparent; font-family: var(--font); font-size: 0.84rem;
+      font-weight: 500; cursor: pointer; color: var(--text-soft);
+      transition: all 0.15s; white-space: nowrap;
+    }
+    .tab-btn:hover { color: var(--text); }
+    .tab-btn.active { background: var(--bg-card); color: var(--crimson); font-weight: 600; box-shadow: var(--shadow-sm); }
+    .header-cta { display: flex; align-items: center; justify-content: flex-end; }
+
+    /* ─── BUTTONS ─────────────────────────────────────── */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: var(--crimson); color: #fff; border: none; border-radius: var(--radius);
+      padding: 0.75rem 1.6rem; font-family: var(--font); font-size: 0.9rem; font-weight: 600;
+      cursor: pointer; text-decoration: none; transition: all 0.2s;
+      box-shadow: var(--shadow-crimson);
+    }
+    .btn-primary:hover { background: var(--crimson-dark); transform: translateY(-1px); box-shadow: 0 12px 28px rgba(196,30,58,0.28); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: transparent; color: var(--text-soft); border: 1.5px solid var(--border-mid);
+      border-radius: var(--radius); padding: 0.75rem 1.6rem;
+      font-family: var(--font); font-size: 0.9rem; font-weight: 500;
+      cursor: pointer; text-decoration: none; transition: all 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--text); color: var(--text); background: var(--bg-soft); }
+    .btn-white {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: #fff; color: var(--crimson); border: none; border-radius: var(--radius);
+      padding: 0.8rem 2rem; font-family: var(--font); font-size: 0.95rem; font-weight: 700;
+      cursor: pointer; text-decoration: none; transition: all 0.2s;
+    }
+    .btn-white:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(255,255,255,0.25); }
+    .btn-outline-white {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: transparent; color: rgba(255,255,255,0.85); border: 1.5px solid rgba(255,255,255,0.35);
+      border-radius: var(--radius); padding: 0.75rem 1.6rem;
+      font-family: var(--font); font-size: 0.9rem; font-weight: 500;
+      cursor: pointer; text-decoration: none; transition: all 0.2s;
+    }
+    .btn-outline-white:hover { border-color: rgba(255,255,255,0.7); color: #fff; }
+
+    /* ─── LAYOUT ─────────────────────────────────────── */
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 2rem; }
+    .page-body { padding-top: 68px; }
+
+    /* ═══════════════════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════════════════ */
+    .hero {
+      position: relative; min-height: 90vh; display: flex; align-items: center;
+      overflow: hidden; background: #0c1018;
+    }
+    .hero-grid {
+      position: absolute; inset: 0; overflow: hidden;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 64px 64px;
+      animation: gridScroll 24s linear infinite;
+    }
+    @keyframes gridScroll { from { background-position: 0 0; } to { background-position: 64px 64px; } }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(160deg, rgba(12,16,24,0.75) 0%, rgba(12,16,24,0.35) 50%, rgba(12,16,24,0.70) 100%);
+    }
+    .hero-orb {
+      position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.22;
+      animation: orbFloat 14s ease-in-out infinite;
+    }
+    .hero-orb.o1 { width: 700px; height: 700px; background: rgba(196,30,58,0.18); top: -20%; right: -12%; animation-delay: 0s; }
+    .hero-orb.o2 { width: 500px; height: 500px; background: rgba(80,40,160,0.10); bottom: -15%; left: -5%; animation-delay: -7s; }
+    @keyframes orbFloat { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(20px,-20px) scale(1.04); } }
+    .hero-badge {
+      position: absolute; background: #ffffff;
+      border: 1px solid var(--border); border-radius: 12px;
+      padding: 0.75rem 1.1rem; font-family: var(--mono); font-size: 0.72rem;
+      color: var(--text-soft); white-space: nowrap;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.05);
+      animation: badgeFloat 8s ease-in-out infinite;
+    }
+    .hero-badge.b1 { top: 22%; right: 6%; animation-delay: 0s; }
+    .hero-badge.b2 { top: 50%; right: 4%; animation-delay: -3s; }
+    .hero-badge.b3 { bottom: 22%; right: 9%; animation-delay: -5s; }
+    .badge-label { font-size: 0.6rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.25rem; display: block; }
+    .badge-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #22c55e; margin-right: 0.35rem; animation: blink 2s infinite; vertical-align: middle; }
+    .badge-dot.yellow { background: #eab308; }
+    @keyframes badgeFloat { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-8px); } }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    .hero-content { position: relative; z-index: 2; padding: 5rem 2rem 4rem; max-width: 780px; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(196,30,58,0.22); border: 1px solid rgba(196,30,58,0.4);
+      border-radius: 20px; padding: 0.3rem 0.85rem;
+      font-size: 0.72rem; font-weight: 700; color: rgba(255,255,255,0.92);
+      text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.75rem;
+    }
+    .hero-headline {
+      font-size: clamp(2rem, 5vw, 3.6rem); font-weight: 900;
+      color: #f1f5f9; line-height: 1.1; margin-bottom: 1.5rem;
+      letter-spacing: -0.04em;
+    }
+    .hero-sub {
+      font-size: 1.08rem; color: rgba(255,255,255,0.72); line-height: 1.72;
+      margin-bottom: 2.25rem; max-width: 580px; font-weight: 400;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero-scroll-hint {
+      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+      color: rgba(255,255,255,0.3); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase;
+      z-index: 2;
+    }
+    .scroll-arrow { animation: scrollBounce 2s ease-in-out infinite; }
+    @keyframes scrollBounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+
+    /* ═══════════════════════════════════════════════════
+       STAT STRIP
+    ═══════════════════════════════════════════════════ */
+    .stat-strip { background: var(--bg); border-bottom: 1px solid var(--border); }
+    .stat-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      border-left: 1px solid var(--border);
+    }
+    .stat-card {
+      padding: 2.25rem 2rem; border-right: 1px solid var(--border);
+      position: relative; transition: background 0.2s;
+    }
+    .stat-card:hover { background: var(--bg-soft); }
+    .stat-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--crimson), var(--crimson-mid));
+      transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+    }
+    .stat-card:hover::before { transform: scaleX(1); }
+    .stat-value { font-size: 2.8rem; font-weight: 900; color: var(--crimson); letter-spacing: -0.05em; line-height: 1; margin-bottom: 0.5rem; }
+    .stat-label { font-size: 0.82rem; color: var(--text-soft); line-height: 1.55; }
+
+    /* ═══════════════════════════════════════════════════
+       SECTIONS
+    ═══════════════════════════════════════════════════ */
+    .section { padding: 6rem 0; }
+    .section-alt { background: var(--bg-soft); }
+    .section-tinted { background: linear-gradient(135deg, #141927 0%, #1a2035 60%, #111825 100%); }
+    .section-tinted .section-label { color: rgba(196,30,58,0.9); }
+    .section-tinted .section-headline { color: #f1f5f9; }
+    .section-tinted .section-sub { color: rgba(255,255,255,0.62); }
+    .section-label {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.72rem; font-weight: 700; color: var(--crimson);
+      text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 1rem;
+    }
+    .section-label::before { content: ''; display: block; width: 20px; height: 2px; background: var(--crimson); border-radius: 1px; }
+    .section-headline {
+      font-size: clamp(1.75rem, 3.5vw, 2.6rem); font-weight: 800;
+      color: var(--text); line-height: 1.12; letter-spacing: -0.035em; margin-bottom: 1.1rem;
+    }
+    .section-sub { font-size: 0.97rem; color: var(--text-soft); line-height: 1.8; max-width: 660px; margin-bottom: 3rem; }
+
+    /* ─── PROBLEM TILES ─────────────────────────────── */
+    .prob-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+    .prob-card {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-lg); padding: 2rem 1.75rem;
+      position: relative; overflow: hidden; transition: all 0.25s;
+    }
+    .prob-card:hover { transform: translateY(-3px); border-color: rgba(196,30,58,0.3); }
+    .prob-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+      background: var(--crimson); transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+    }
+    .prob-card:hover::after { transform: scaleX(1); }
+    .prob-icon { width: 44px; height: 44px; background: rgba(196,30,58,0.15); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; }
+    .prob-icon svg { width: 22px; height: 22px; stroke: var(--crimson-mid); }
+    .prob-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.6rem; color: #f1f5f9; }
+    .prob-desc { font-size: 0.84rem; color: rgba(255,255,255,0.58); line-height: 1.7; }
+
+    /* ─── LAYER ARCHITECTURE ──────────────────────────── */
+    .layers-wrap { max-width: 860px; }
+    .layer-item {
+      display: grid; grid-template-columns: 56px 1fr; gap: 1.5rem;
+      padding: 2rem 0; position: relative;
+    }
+    .layer-item:not(:last-child) { border-bottom: 1px solid var(--border); }
+    .layer-num-col { display: flex; flex-direction: column; align-items: center; }
+    .layer-num {
+      width: 44px; height: 44px; border-radius: 50%; background: var(--crimson);
+      color: #fff; font-size: 0.75rem; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      letter-spacing: 0.04em; flex-shrink: 0;
+    }
+    .layer-connector { flex: 1; width: 2px; background: linear-gradient(to bottom, var(--crimson), transparent); margin-top: 8px; opacity: 0.3; }
+    .layer-item:last-child .layer-connector { display: none; }
+    .layer-tech-tag { display: inline-block; font-size: 0.67rem; font-weight: 600; color: var(--crimson); text-transform: uppercase; letter-spacing: 0.08em; background: var(--crimson-bg); border-radius: 4px; padding: 0.15rem 0.5rem; margin-bottom: 0.4rem; }
+    .layer-name { font-size: 1.15rem; font-weight: 800; margin-bottom: 0.5rem; letter-spacing: -0.01em; }
+    .layer-desc { font-size: 0.87rem; color: var(--text-soft); line-height: 1.75; }
+
+    /* ─── TERMINAL SECTION ───────────────────────────── */
+    .terminal-section { background: var(--term-bg); padding: 5rem 0; }
+    .term-outer { border: 1px solid var(--term-border); border-radius: 16px; overflow: hidden; max-width: 960px; margin: 0 auto; }
+    .term-titlebar {
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--term-surface2); padding: 0.75rem 1.25rem;
+      border-bottom: 1px solid var(--term-border);
+    }
+    .term-dots { display: flex; gap: 0.4rem; }
+    .term-dot { width: 11px; height: 11px; border-radius: 50%; }
+    .term-dot.red { background: #ef4444; }
+    .term-dot.yellow { background: #eab308; }
+    .term-dot.green { background: #22c55e; }
+    .term-title-label { font-family: var(--mono); font-size: 0.72rem; color: var(--term-soft); letter-spacing: 0.06em; text-transform: uppercase; }
+    .term-live-badge { display: flex; align-items: center; gap: 0.4rem; font-family: var(--mono); font-size: 0.68rem; color: var(--term-green); }
+    .live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--term-green); animation: blink 2s infinite; }
+    .term-tabs-bar { display: flex; background: var(--term-surface); border-bottom: 1px solid var(--term-border); }
+    .term-tab-btn {
+      padding: 0.65rem 1.25rem; font-family: var(--mono); font-size: 0.72rem;
+      font-weight: 600; color: var(--term-soft); background: transparent; border: none;
+      border-bottom: 2px solid transparent; cursor: pointer; transition: all 0.15s;
+      text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .term-tab-btn.active { color: var(--term-green); border-bottom-color: var(--term-green); }
+    .term-tab-btn:hover:not(.active) { color: var(--term-text); }
+    .term-body { padding: 1.5rem; font-family: var(--mono); font-size: 0.76rem; color: var(--term-text); line-height: 1.7; background: var(--term-bg); min-height: 460px; }
+    .term-tab-panel { display: none; }
+    .term-tab-panel.active { display: block; }
+    .term-hr { border: none; border-top: 1px solid var(--term-border); margin: 0.75rem 0; }
+    pre.term-pre { white-space: pre; font-family: var(--mono); font-size: 0.72rem; color: var(--term-text); line-height: 1.6; overflow-x: auto; }
+    .t-green { color: var(--term-green); }
+    .t-yellow { color: var(--term-yellow); }
+    .t-red { color: var(--term-red); }
+    .t-blue { color: var(--term-blue); }
+    .t-purple { color: var(--term-purple); }
+    .t-soft { color: var(--term-soft); }
+    .t-bold { font-weight: 700; }
+
+    /* ─── VIDEO SECTION ────────────────────────────── */
+    .video-section { background: #0c1018; padding: 6rem 0; }
+    .video-section .section-label { color: rgba(196,30,58,0.9); }
+    .video-section .section-headline { color: #f1f5f9; }
+    .video-section .section-sub { color: rgba(255,255,255,0.62); }
+    .video-wrap {
+      max-width: 860px; margin: 0 auto;
+      border-radius: 16px; overflow: hidden;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 8px 24px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .video-wrap video { display: block; width: 100%; border-radius: 16px; }
+
+    /* ─── CALCULATOR ───────────────────────────────── */
+    .calc-card {
+      background: #141d2b; border: 1px solid var(--term-border);
+      border-radius: 20px; padding: 2.5rem; max-width: 780px; margin: 0 auto;
+    }
+    .calc-desc { font-size: 0.92rem; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 2rem; }
+    .slider-group { margin-bottom: 2rem; }
+    .slider-label { font-size: 0.78rem; font-weight: 600; color: rgba(255,255,255,0.7); margin-bottom: 0.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .slider-val { font-family: var(--mono); font-size: 0.9rem; font-weight: 700; color: var(--crimson-mid); }
+    input[type=range].calc-slider {
+      width: 100%; height: 4px; -webkit-appearance: none; appearance: none;
+      background: var(--term-border); border-radius: 2px; outline: none; cursor: pointer;
+    }
+    input[type=range].calc-slider::-webkit-slider-thumb {
+      -webkit-appearance: none; appearance: none;
+      width: 18px; height: 18px; border-radius: 50%;
+      background: var(--crimson); cursor: pointer;
+      box-shadow: 0 0 0 3px rgba(196,30,58,0.25);
+    }
+    input[type=range].calc-slider::-moz-range-thumb {
+      width: 18px; height: 18px; border-radius: 50%;
+      background: var(--crimson); cursor: pointer; border: none;
+    }
+    .calc-output {
+      background: rgba(0,0,0,0.3); border: 1px solid var(--term-border);
+      border-radius: 12px; padding: 1.5rem; margin-top: 0.5rem;
+    }
+    .calc-output-row { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .calc-output-row:last-child { border-bottom: none; }
+    .calc-output-label { font-size: 0.82rem; color: rgba(255,255,255,0.55); }
+    .calc-output-val { font-family: var(--mono); font-size: 1.1rem; font-weight: 700; color: var(--term-green); }
+    .calc-output-val.annual { font-size: 1.4rem; color: var(--crimson-mid); }
+
+    /* ─── PHASE ROADMAP ─────────────────────────────── */
+    .phase-roadmap { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin-top: 2.5rem; }
+    .phase-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.75rem 1.5rem;
+      position: relative; transition: all 0.25s;
+    }
+    .phase-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+    .phase-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    }
+    .phase-card:nth-child(1)::before { background: var(--crimson); }
+    .phase-card:nth-child(2)::before { background: #3b82f6; }
+    .phase-card:nth-child(3)::before { background: #8b5cf6; }
+    .phase-num { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-dim); margin-bottom: 0.2rem; }
+    .phase-time { font-size: 0.78rem; font-weight: 800; color: var(--crimson); margin-bottom: 0.75rem; font-family: var(--mono); }
+    .phase-card:nth-child(2) .phase-time { color: #3b82f6; }
+    .phase-card:nth-child(3) .phase-time { color: #8b5cf6; }
+    .phase-name { font-size: 1.05rem; font-weight: 800; margin-bottom: 0.6rem; color: var(--text); }
+    .phase-desc { font-size: 0.8rem; color: var(--text-soft); line-height: 1.65; margin-bottom: 1rem; }
+    .phase-win { font-size: 0.72rem; font-weight: 700; color: var(--text-soft); background: var(--bg-soft); border-radius: 6px; padding: 0.4rem 0.7rem; }
+
+    /* ─── INTELLIGENCE CARDS ────────────────────────── */
+    .intel-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.25rem; }
+    .intel-card {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px; padding: 1.75rem; transition: border-color 0.2s;
+    }
+    .intel-card:hover { border-color: rgba(255,255,255,0.16); }
+    .intel-badge { display: inline-block; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; border-radius: 4px; padding: 0.15rem 0.5rem; margin-bottom: 0.75rem; font-family: var(--mono); }
+    .intel-badge.operational { background: rgba(96,165,250,0.15); color: var(--term-blue); }
+    .intel-badge.market { background: rgba(34,197,94,0.15); color: var(--term-green); }
+    .intel-badge.retention { background: rgba(167,139,250,0.15); color: var(--term-purple); }
+    .intel-badge.knowledge { background: rgba(234,179,8,0.15); color: var(--term-yellow); }
+    .intel-text { font-size: 0.87rem; color: rgba(255,255,255,0.7); line-height: 1.68; }
+
+    /* ─── QUOTE SECTION ─────────────────────────────── */
+    .quote-section { background: #0c1018; padding: 6rem 0; text-align: center; }
+    .quote-inner { max-width: 760px; margin: 0 auto; padding: 0 2rem; }
+    .quote-text {
+      font-size: clamp(1.2rem, 2.5vw, 1.65rem); line-height: 1.65; color: rgba(255,255,255,0.75);
+      font-weight: 400; margin-bottom: 1.5rem;
+    }
+    .quote-text em { font-style: italic; }
+    .quote-emphasis { font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 800; color: #f1f5f9; margin-top: 1.5rem; }
+    .quote-emphasis span { color: var(--crimson-mid); }
+
+    /* ─── CTA BAND ──────────────────────────────────── */
+    .cta-band {
+      background: linear-gradient(135deg, var(--crimson) 0%, var(--crimson-dark) 100%);
+      padding: 5.5rem 0; text-align: center; position: relative; overflow: hidden;
+    }
+    .cta-band::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .cta-band-inner { position: relative; z-index: 1; }
+    .cta-band h2 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 900; color: #fff; margin-bottom: 0.75rem; letter-spacing: -0.03em; }
+    .cta-band p { color: rgba(255,255,255,0.75); font-size: 1.05rem; margin-bottom: 2.25rem; }
+    .cta-band-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .cta-affiliate { margin-top: 3rem; font-size: 0.82rem; color: rgba(255,255,255,0.55); max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+    .cta-affiliate a { color: rgba(255,255,255,0.85); text-decoration: underline; text-underline-offset: 2px; }
+    .cta-affiliate a:hover { color: #fff; }
+
+    /* ─── FOOTER ─────────────────────────────────────── */
+    footer { background: var(--navy); padding: 2.25rem; text-align: center; }
+    footer p { font-size: 0.78rem; color: rgba(255,255,255,0.35); line-height: 1.7; }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    footer a:hover { color: rgba(255,255,255,0.8); }
+    footer .footer-conf { font-size: 0.68rem; color: rgba(255,255,255,0.2); margin-top: 0.4rem; font-style: italic; }
+
+    /* ─── RESPONSIVE ────────────────────────────────── */
+    @media (max-width: 960px) {
+      .prob-grid { grid-template-columns: 1fr 1fr; }
+      .hero-badge { display: none; }
+      .intel-grid { grid-template-columns: 1fr; }
+      .phase-roadmap { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .prob-grid { grid-template-columns: 1fr; }
+      .stat-grid { grid-template-columns: 1fr; border-left: none; }
+      .stat-card { border: 1px solid var(--border); border-right: 1px solid var(--border); border-radius: var(--radius-lg); margin-bottom: 0.75rem; }
+      .header-tabs { display: none; }
+      .site-header { padding: 0 1rem; grid-template-columns: 1fr auto; }
+      .header-cta { display: none; }
+      .container { padding: 0 1.25rem; }
+    }
+  </style>
+</head>
+<body x-data="{ tab: 'overview', termTab: 'pipeline', scrolled: false }"
+      x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 10 })">
+
+<!-- ════════ HEADER ════════ -->
+<header class="site-header" :class="{ scrolled: scrolled }">
+  <div class="header-logo">
+    <svg viewBox="0 0 100 112" xmlns="http://www.w3.org/2000/svg" style="height:32px;width:auto;flex-shrink:0;" aria-label="Tribune">
+      <rect x="18" y="10" width="64" height="16" rx="2" fill="#0A0B12"/>
+      <polygon points="18,33 46,33 46,86 37,86 18,60" fill="#0A0B12"/>
+      <polygon points="54,33 82,33 82,60 63,86 54,86" fill="#0A0B12"/>
+      <polygon points="40,90 60,90 50,104" fill="#7A1A5C"/>
+    </svg>
+    <div>
+      <div class="header-logo-text">TRIBUNE <span class="sep">×</span> <span class="client">VALEO</span></div>
+      <div class="header-sub-line">Confidential · Prepared for Valeo Resources</div>
+    </div>
+  </div>
+  <div class="header-tabs">
+    <button class="tab-btn" :class="{ active: tab === 'overview' }" @click="tab='overview'; window.scrollTo({top:0,behavior:'smooth'})">Overview</button>
+    <button class="tab-btn" :class="{ active: tab === 'stack' }" @click="tab='stack'; window.scrollTo({top:0,behavior:'smooth'})">The Stack</button>
+    <button class="tab-btn" :class="{ active: tab === 'terminal' }" @click="tab='terminal'; window.scrollTo({top:0,behavior:'smooth'})">Live Terminal</button>
+    <button class="tab-btn" :class="{ active: tab === 'nextsteps' }" @click="tab='nextsteps'; window.scrollTo({top:0,behavior:'smooth'})">Next Steps</button>
+  </div>
+  <div class="header-cta">
+    <a href="https://calendly.com/ryan-maxximus/30min" target="_blank" class="btn-primary" style="font-size:0.82rem;padding:0.5rem 1.1rem;">Book a Call →</a>
+  </div>
+</header>
+
+<div class="page-body">
+
+<!-- ════════════════════════════════════════════════
+     OVERVIEW TAB
+════════════════════════════════════════════════ -->
+<div x-show="tab === 'overview'" x-cloak>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-orb o1"></div>
+    <div class="hero-orb o2"></div>
+
+    <!-- Floating data badges -->
+    <div class="hero-badge b1">
+      <span class="badge-label"><span class="badge-dot"></span>Placements This Week</span>
+      <strong style="color:var(--text);font-size:0.97rem;">7</strong>
+    </div>
+    <div class="hero-badge b2">
+      <span class="badge-label"><span class="badge-dot"></span>Active Candidates</span>
+      <strong style="color:var(--text);font-size:0.97rem;">142</strong>
+    </div>
+    <div class="hero-badge b3">
+      <span class="badge-label"><span class="badge-dot yellow"></span>BD Signals Today</span>
+      <strong style="color:var(--text);font-size:0.97rem;">3 new BH clinics</strong>
+    </div>
+
+    <div class="hero-content container" style="max-width:1120px;padding-top:6rem;padding-bottom:5rem;">
+      <div class="hero-eyebrow">
+        <span>●</span> Confidential — Prepared for Valeo Resources
+      </div>
+      <h1 class="hero-headline">
+        The Recruiters Win on Relationships.<br>
+        <span class="grad-text">Tribune Makes Sure No Relationship Dies.</span>
+      </h1>
+      <p class="hero-sub">
+        Healthcare recruiting runs on relationships. But the work that protects those relationships — sourcing candidates, following up, managing client accounts — is almost entirely manual. Every hour spent on admin is an hour not spent closing a placement.
+      </p>
+      <div class="hero-actions">
+        <a href="https://calendly.com/ryan-maxximus/30min" target="_blank" class="btn-primary" style="font-size:0.97rem;padding:0.85rem 1.85rem;">
+          Book a Call with Ryan →
+        </a>
+        <a href="https://tribuneinc.com" target="_blank" class="btn-outline-white" style="font-size:0.97rem;padding:0.85rem 1.85rem;">
+          View Tribune Platform
+        </a>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <div class="scroll-arrow">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- STAT STRIP -->
+  <div class="stat-strip">
+    <div class="container">
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-value">40–60%</div>
+          <div class="stat-label">of recruiter time spent on tasks that don't require a human</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">45–90 days</div>
+          <div class="stat-label">average time-to-fill for a behavioral health clinical role</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">$1,000/day</div>
+          <div class="stat-label">cost of an open seat to a behavioral health clinic</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROBLEM SECTION -->
+  <section class="section section-tinted">
+    <div class="container">
+      <div class="section-label">The Problem</div>
+      <h2 class="section-headline">Three Problems That Drain Every Recruiting Team.</h2>
+      <p class="section-sub" style="margin-bottom:2.5rem;">Valeo's team is strong. The relationships are real. The problem is what happens around those relationships — the manual work that consumes the hours that should be spent on placements.</p>
+      <div class="prob-grid">
+        <div class="prob-card">
+          <div class="prob-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <div class="prob-title">The Sourcing Grind</div>
+          <div class="prob-desc">Recruiters spend hours manually searching LinkedIn, job boards, and databases for candidates that match open role profiles. The best candidates are passive — they don't apply. Finding them is manual, slow, and inconsistent.</div>
+        </div>
+        <div class="prob-card">
+          <div class="prob-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="prob-title">Follow-Up That Falls Through</div>
+          <div class="prob-desc">A recruiter's pipeline dies when follow-up is inconsistent. Candidates go cold. Clients stop hearing from you. Placements slip to competitors who called back faster. Every missed follow-up is a missed fee.</div>
+        </div>
+        <div class="prob-card">
+          <div class="prob-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="prob-title">Knowledge That Walks Out the Door</div>
+          <div class="prob-desc">Twenty years of placement patterns, candidate relationships, and client intelligence lives in people's heads. Recruiter turnover in staffing runs 35–40% annually. Every departure takes the playbook with it.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO SECTION -->
+  <section class="video-section">
+    <div class="container">
+      <div class="section-label">From the Founder</div>
+      <h2 class="section-headline" style="color:#f1f5f9;max-width:640px;">Built for the way Valeo already works.</h2>
+      <p class="section-sub" style="margin-bottom:2.5rem;">Tribune doesn't reimagine your business. It eliminates the work surrounding your relationships — so your recruiters spend every hour on the calls that close placements.</p>
+      <div class="video-wrap">
+        <video
+          controls
+          muted
+          playsinline
+          preload="metadata"
+          style="width:100%;display:block;border-radius:14px;"
+          x-intersect.once="$el.play()"
+        >
+          <source src="https://res.cloudinary.com/dthdxjmgb/video/upload/v1785439055/marcus-valeo-tribune-cropped_owuird.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLACEMENT REVENUE CALCULATOR -->
+  <section class="section" style="background:#0a0e1a;">
+    <div class="container" style="text-align:center;">
+      <div class="section-label" style="justify-content:center;">Revenue Calculator</div>
+      <h2 class="section-headline" style="color:#f1f5f9;max-width:640px;margin:0 auto 0.75rem;">Your Placement Revenue Upside</h2>
+      <div x-data="{
+        recruiters: 5,
+        fee: 12000,
+        extra: 2,
+        get monthly() { return this.recruiters * this.extra; },
+        get monthlyRev() { return this.monthly * this.fee; },
+        get annualRev() { return this.monthlyRev * 12; },
+        fmt(n) { return '$' + n.toLocaleString('en-US'); }
+      }" style="margin-top:2.5rem;">
+        <div class="calc-card">
+          <p class="calc-desc">Tribune's pipeline automation typically adds 2–4 additional placements per recruiter per month by eliminating follow-up gaps and surfacing at-risk candidates faster. Adjust the numbers to match Valeo's reality.</p>
+          <div class="slider-group">
+            <div class="slider-label">
+              <span>Number of recruiters</span>
+              <span class="slider-val" x-text="recruiters"></span>
+            </div>
+            <input type="range" class="calc-slider" min="1" max="20" x-model="recruiters">
+          </div>
+          <div class="slider-group">
+            <div class="slider-label">
+              <span>Average placement fee</span>
+              <span class="slider-val" x-text="'$' + Number(fee).toLocaleString('en-US')"></span>
+            </div>
+            <input type="range" class="calc-slider" min="5000" max="30000" step="500" x-model="fee">
+          </div>
+          <div class="slider-group">
+            <div class="slider-label">
+              <span>Additional placements per recruiter / month</span>
+              <span class="slider-val" x-text="extra"></span>
+            </div>
+            <input type="range" class="calc-slider" min="1" max="5" x-model="extra">
+          </div>
+          <div class="calc-output">
+            <div class="calc-output-row">
+              <span class="calc-output-label">Additional monthly placements</span>
+              <span class="calc-output-val" x-text="monthly"></span>
+            </div>
+            <div class="calc-output-row">
+              <span class="calc-output-label">Additional monthly revenue</span>
+              <span class="calc-output-val" x-text="fmt(monthlyRev)"></span>
+            </div>
+            <div class="calc-output-row">
+              <span class="calc-output-label">Additional annual revenue</span>
+              <span class="calc-output-val annual" x-text="fmt(annualRev)"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CRAWL / WALK / RUN -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-label">The Engagement Path</div>
+      <h2 class="section-headline">Crawl. Walk. Run. <span class="grad-text">In 90 Days.</span></h2>
+      <p class="section-sub">Each phase delivers measurable ROI before the next begins. Full stack live in under 90 days.</p>
+      <div class="phase-roadmap">
+        <div class="phase-card">
+          <div class="phase-num">Phase 1</div>
+          <div class="phase-time">Weeks 1–6</div>
+          <div class="phase-name">Admin Relief</div>
+          <div class="phase-desc">Automate all follow-up sequences. Every candidate gets contacted on schedule. Every client gets a weekly update. Recruiters reclaim 8–10 hours/week immediately.</div>
+          <div class="phase-win">🎯 8 hrs/day labor recovered from Day 1</div>
+        </div>
+        <div class="phase-card">
+          <div class="phase-num">Phase 2</div>
+          <div class="phase-time">Weeks 7–12</div>
+          <div class="phase-name">Recruiter Intelligence</div>
+          <div class="phase-desc">Mission Control Terminal live. Morning briefings. At-risk alerts. Candidate scoring. Recruiters stop managing from memory and start managing from a dashboard.</div>
+          <div class="phase-win">🎯 Processor capacity doubles</div>
+        </div>
+        <div class="phase-card">
+          <div class="phase-num">Phase 3</div>
+          <div class="phase-time">Weeks 13+</div>
+          <div class="phase-name">BD Engine + Full Intelligence</div>
+          <div class="phase-desc">Talent Intelligence Layer live. BD signal detection running. Rob's weekly briefing automated. Valeo's 20 years of placement history transformed into a living competitive advantage.</div>
+          <div class="phase-win">🎯 20,000-case equivalent trajectory begins</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KNOWLEDGE INTELLIGENCE -->
+  <section class="section section-tinted">
+    <div class="container">
+      <div class="section-label">Knowledge Intelligence</div>
+      <h2 class="section-headline">What the System Already Sees.</h2>
+      <p class="section-sub">From the first week of operation, Tribune surfaces patterns that are invisible to any individual recruiter.</p>
+      <div class="intel-grid">
+        <div class="intel-card">
+          <div class="intel-badge operational">Operational Pattern</div>
+          <p class="intel-text">BH clinical director roles are responsible for 38% of pipeline stalls across active placements. An automated follow-up escalation sequence at day 21 would recover the majority of these without recruiter involvement.</p>
+        </div>
+        <div class="intel-card">
+          <div class="intel-badge market">Market Signal</div>
+          <p class="intel-text">3 new behavioral health clinics in South Florida posted clinical roles in the last 7 days — all without a Valeo relationship on file. BD outreach drafts are ready for Rob's review.</p>
+        </div>
+        <div class="intel-card">
+          <div class="intel-badge retention">Retention Intelligence</div>
+          <p class="intel-text">Candidates placed through LinkedIn outreach have a 31% higher 6-month retention rate than job board sources. This is Valeo's highest-value sourcing channel — and it is currently underweighted in the team's workflow.</p>
+        </div>
+        <div class="intel-card">
+          <div class="intel-badge knowledge">Knowledge Capture</div>
+          <p class="intel-text">Sarah K.'s candidate re-engagement sequence achieves 44% response rate vs. 17% team average. The pattern has been extracted and proposed as the new standard operating procedure for cold candidates.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE SECTION -->
+  <section class="quote-section">
+    <div class="quote-inner">
+      <p class="quote-text">
+        Tribune does not replace Valeo's recruiters. It eliminates the administrative work that prevents them from recruiting.
+        <br><br>
+        Every relationship Rob's team has built over 20 years is an asset. Tribune makes sure those relationships are never lost to a missed follow-up, a cold pipeline, or a candidate who fell through the cracks because the team was stretched thin.
+      </p>
+      <div class="quote-emphasis">The goal: <span>same team, twice the placements.</span></div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="cta-band">
+    <div class="container cta-band-inner">
+      <h2>Ready to see it in Valeo's workflow?</h2>
+      <p>Ryan will walk through the full system live. 30 minutes. No pitch deck.</p>
+      <div class="cta-band-actions">
+        <a href="https://calendly.com/ryan-maxximus/30min" target="_blank" class="btn-white">Book a Call with Ryan →</a>
+        <a href="https://tribuneinc.com" target="_blank" class="btn-outline-white">View Tribune Platform</a>
+      </div>
+      <p class="cta-affiliate">
+        There's a second conversation worth having — how Valeo's network could accelerate Tribune's growth in behavioral health. If that interests you, let's make time for it.<br>
+        <a href="https://calendly.com/ryan-maxximus/30min" target="_blank">Talk to Ryan About Partnership →</a>
+      </p>
+    </div>
+  </section>
+
+</div><!-- /overview -->
+
+
+<!-- ════════════════════════════════════════════════
+     THE STACK TAB
+════════════════════════════════════════════════ -->
+<div x-show="tab === 'stack'" x-cloak>
+
+  <!-- Stack Hero -->
+  <section class="hero" style="min-height:52vh;">
+    <div class="hero-grid"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-orb o1"></div>
+    <div class="hero-content container" style="max-width:1120px;padding-top:5rem;padding-bottom:4rem;">
+      <div class="hero-eyebrow"><span>●</span> Solution Architecture</div>
+      <h1 class="hero-headline" style="font-size:clamp(1.8rem,4vw,3rem);">Four Layers That Connect Execution to Intelligence.</h1>
+      <p class="hero-sub">Already using a CRM? Tribune doesn't replace it. Tribune turns it into an agentic operating system.</p>
+    </div>
+  </section>
+
+  <!-- L1-L4 Layers -->
+  <section class="section">
+    <div class="container">
+      <div class="layers-wrap">
+        <div class="layer-item">
+          <div class="layer-num-col">
+            <div class="layer-num">L1</div>
+            <div class="layer-connector"></div>
+          </div>
+          <div>
+            <div class="layer-tech-tag">Make.com / Workflow Automations</div>
+            <div class="layer-name">Pipeline Execution Layer</div>
+            <div class="layer-desc">Deterministic workflows that run 24/7: candidate outreach sequences (Day 1→3→7→14), interview reminders, weekly client updates, recertification reactivation, new role intake triggers. Every follow-up happens on schedule. Nothing falls through the cracks.</div>
+          </div>
+        </div>
+        <div class="layer-item">
+          <div class="layer-num-col">
+            <div class="layer-num">L2</div>
+            <div class="layer-connector"></div>
+          </div>
+          <div>
+            <div class="layer-tech-tag">OpenClaw / Agentic AI — Mission Control Terminal</div>
+            <div class="layer-name">Recruiter Intelligence Layer</div>
+            <div class="layer-desc">Morning briefings with daily priority list. At-risk placement alerts. Candidate scoring against open roles. Call prep before every client touch. Recruiters stop managing from memory and start managing from a live command center.</div>
+          </div>
+        </div>
+        <div class="layer-item">
+          <div class="layer-num-col">
+            <div class="layer-num" style="background:#3b82f6;">L3</div>
+            <div class="layer-connector"></div>
+          </div>
+          <div>
+            <div class="layer-tech-tag" style="color:#3b82f6;background:rgba(59,130,246,0.08);">Knowledge Intelligence Engine</div>
+            <div class="layer-name">Talent Intelligence Layer</div>
+            <div class="layer-desc">Valeo's 20 years of placement history becomes a living competitive advantage. Which role types fill fastest? Which candidate sources have the highest 6-month retention? Which BH clinic segments have the highest repeat business? The institutional knowledge compounds — and stays when people move on.</div>
+          </div>
+        </div>
+        <div class="layer-item">
+          <div class="layer-num-col">
+            <div class="layer-num">L4</div>
+            <div class="layer-connector"></div>
+          </div>
+          <div>
+            <div class="layer-tech-tag">C-Suite Agent Layer</div>
+            <div class="layer-name">BD + Strategy Layer</div>
+            <div class="layer-desc">Rob's personal intelligence engine. Monitors when BH clinics in Valeo's markets post new jobs (signals they're growing or struggling to hire). Tracks relationship cadence for every key contact. Weekly BD briefing every Monday. Auto-drafts outreach for Rob to review.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Crawl/Walk/Run repeat on Stack tab -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-label">Implementation</div>
+      <h2 class="section-headline">Three Phases. Zero Risk. <span class="grad-text">Immediate ROI.</span></h2>
+      <p class="section-sub">We build in phases — each one delivering measurable ROI before the next begins.</p>
+      <div class="phase-roadmap">
+        <div class="phase-card">
+          <div class="phase-num">Phase 1</div>
+          <div class="phase-time">Weeks 1–6</div>
+          <div class="phase-name">Admin Relief</div>
+          <div class="phase-desc">Automate all follow-up sequences. Every candidate gets contacted on schedule. Every client gets a weekly update. Recruiters reclaim 8–10 hours/week immediately.</div>
+          <div class="phase-win">🎯 8 hrs/day labor recovered from Day 1</div>
+        </div>
+        <div class="phase-card">
+          <div class="phase-num">Phase 2</div>
+          <div class="phase-time">Weeks 7–12</div>
+          <div class="phase-name">Recruiter Intelligence</div>
+          <div class="phase-desc">Mission Control Terminal live. Morning briefings. At-risk alerts. Candidate scoring. Recruiters stop managing from memory and start managing from a dashboard.</div>
+          <div class="phase-win">🎯 Processor capacity doubles</div>
+        </div>
+        <div class="phase-card">
+          <div class="phase-num">Phase 3</div>
+          <div class="phase-time">Weeks 13+</div>
+          <div class="phase-name">BD Engine + Full Intelligence</div>
+          <div class="phase-desc">Talent Intelligence Layer live. BD signal detection running. Rob's weekly briefing automated. Valeo's 20 years transformed into a living competitive advantage.</div>
+          <div class="phase-win">🎯 20,000-case equivalent trajectory begins</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Band -->
+  <section class="cta-band">
+    <div class="container cta-band-inner">
+      <h2>Ready to see it in Valeo's workflow?</h2>
+      <p>Ryan will walk through the full system live. 30 minutes. No pitch deck.</p>
+      <div class="cta-band-actions">
+        <a href="https://calendly.com/ryan-maxximus/30min" target="_blank" class="btn-white">Book a Call with Ryan →</a>
+        <a href="https://tribuneinc.com" target="_blank" class="btn-outline-white">View Tribune Platform</a>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /stack -->
+
+
+<!-- ════════════════════════════════════════════════
+     LIVE TERMINAL TAB
+════════════════════════════════════════════════ -->
+<div x-show="tab === 'terminal'" x-cloak style="background:var(--term-bg);min-height:calc(100vh - 68px);padding:2.5rem 0 4rem;">
+  <div class="container">
+    <div style="margin-bottom:1.5rem;">
+      <div class="section-label" style="color:rgba(196,30,58,0.9);">Live Demo</div>
+      <h2 style="color:#f1f5f9;font-size:clamp(1.4rem,3vw,2rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:0.4rem;">Valeo Operations Terminal</h2>
+      <p style="font-size:0.84rem;color:var(--term-soft);">Simulated live data — representative of what Valeo's team would see each morning.</p>
+    </div>
+    <div class="term-outer">
+      <!-- Title bar -->
+      <div class="term-titlebar">
+        <div class="term-dots">
+          <div class="term-dot red"></div>
+          <div class="term-dot yellow"></div>
+          <div class="term-dot green"></div>
+        </div>
+        <div class="term-title-label">valeo-ops-terminal — mission-control</div>
+        <div class="term-live-badge"><div class="live-dot"></div> LIVE</div>
+      </div>
+      <!-- Tab bar -->
+      <div class="term-tabs-bar">
+        <button class="term-tab-btn" :class="{ active: termTab === 'pipeline' }" @click="termTab = 'pipeline'">Pipeline Overview</button>
+        <button class="term-tab-btn" :class="{ active: termTab === 'recruiter' }" @click="termTab = 'recruiter'">Recruiter Dashboard</button>
+        <button class="term-tab-btn" :class="{ active: termTab === 'bd' }" @click="termTab = 'bd'">BD Intelligence Feed</button>
+      </div>
+      <!-- Terminal body -->
+      <div class="term-body">
+
+        <!-- Tab 1: Pipeline Overview -->
+        <div class="term-tab-panel" :class="{ active: termTab === 'pipeline' }">
+<pre class="term-pre"><span class="t-bold t-blue">VALEO OPERATIONS TERMINAL</span>  <span class="t-soft">●</span>  <span class="t-green">LIVE</span>  <span class="t-soft">●</span>  07/30/2026 09:14 AM
+<span class="t-soft">═══════════════════════════════════════════════════════════</span>
+
+<span class="t-bold">OPEN ROLES BY CLIENT</span>
+<span class="t-soft">─────────────────────────────────────────────────────────</span>
+  Palm Beach Behavioral Health      Clinical Director        <span class="t-soft">32 days</span>  <span class="t-yellow">⚠</span>
+  Sunrise Recovery Center           Addiction Counselor ×3   <span class="t-soft">18 days</span>  <span class="t-green">✓</span>
+  WPB Psychiatric Associates        RN — Psych               <span class="t-soft">47 days</span>  <span class="t-yellow">⚠</span>
+  South FL Treatment Network        Clinical Supervisor       <span class="t-soft"> 9 days</span>  <span class="t-green">✓</span>
+  Delray Beach Recovery             Program Director         <span class="t-soft">61 days</span>  <span class="t-red">🔴</span>
+
+<span class="t-bold">CANDIDATE PIPELINE</span>
+<span class="t-soft">─────────────────────────────────────────────────────────</span>
+  Sourced         <span class="t-blue">████████████████████░░</span>  84
+  Contacted       <span class="t-blue">████████████░░░░░░░░░░</span>  52
+  Screened        <span class="t-blue">████████░░░░░░░░░░░░░░</span>  31
+  Submitted       <span class="t-blue">█████░░░░░░░░░░░░░░░░░</span>  19
+  Offer           <span class="t-blue">███░░░░░░░░░░░░░░░░░░░</span>   7
+  <span class="t-green">✅ Placed this week</span>                       3</pre>
+        </div>
+
+        <!-- Tab 2: Recruiter Dashboard -->
+        <div class="term-tab-panel" :class="{ active: termTab === 'recruiter' }">
+<pre class="term-pre"><span class="t-bold t-blue">RECRUITER DAILY STATS</span>  —  <span class="t-soft">THURSDAY JULY 30</span>
+<span class="t-soft">─────────────────────────────────────────────────────────</span>
+  <span class="t-bold">Recruiter      Calls   Candidates   Submissions   Placements</span>
+  <span class="t-soft">─────────────────────────────────────────────────────────</span>
+  Sarah K.        14        6             2           <span class="t-green">1</span>
+  Marcus T.       11        4             1           <span class="t-soft">0</span>
+  Jennifer L.     18        9             3           <span class="t-green">2</span>
+  <span class="t-soft">─────────────────────────────────────────────────────────</span>
+  <span class="t-bold">TEAM TOTAL      43       19             6           <span class="t-green">3</span></span>
+
+  <span class="t-yellow">⚠  AT-RISK PLACEMENTS (open > 45 days)</span>
+  Palm Beach Behavioral Health — Clinical Director — Day 32 — <span class="t-soft">Last contact: 4 days ago</span>
+  WPB Psychiatric Associates — RN Psych — Day 47 — <span class="t-soft">Last contact: 7 days ago</span> <span class="t-red">🔴</span>
+  Delray Beach Recovery — Program Director — Day 61 — <span class="t-red">URGENT: Call today</span></pre>
+        </div>
+
+        <!-- Tab 3: BD Intelligence Feed -->
+        <div class="term-tab-panel" :class="{ active: termTab === 'bd' }">
+<pre class="term-pre"><span class="t-bold t-blue">BD SIGNAL FEED</span>  —  <span class="t-soft">NEW BEHAVIORAL HEALTH CLINIC ACTIVITY</span>
+<span class="t-soft">─────────────────────────────────────────────────────────</span>
+  <span class="t-green">🟢 NEW</span>  Oasis Behavioral Health — Boca Raton, FL
+          Posted 3 new clinical roles today → <span class="t-green">Likely hiring surge</span>
+          Key contact: Dr. Patricia Morales, Clinical Director
+          <span class="t-blue">[Draft outreach ready for Rob's review]</span>
+
+  <span class="t-green">🟢 NEW</span>  Coastal Recovery Partners — Ft. Lauderdale, FL
+          Posted RN + Counselor positions → <span class="t-green">Expansion signal</span>
+          No prior Valeo relationship
+          <span class="t-blue">[Draft outreach ready]</span>
+
+  <span class="t-yellow">🟡 WATCH</span>  The Haven Treatment Center — WPB, FL
+           Posted 1 role (Intake Coordinator) — <span class="t-yellow">Monitor for expansion</span>
+           Last Valeo placement: 14 months ago
+           <span class="t-blue">[Re-engagement draft ready]</span>
+
+<span class="t-bold">ROB'S RELATIONSHIP CADENCE ALERTS</span>
+<span class="t-soft">─────────────────────────────────────────────────────────</span>
+  <span class="t-red">🔴</span>  Dr. James Holloway (Pine Grove) — <span class="t-red">38 days since last contact</span>
+  <span class="t-yellow">🟡</span>  Maria Santos (Sunrise Recovery) — <span class="t-yellow">22 days since last contact</span>
+  <span class="t-green">✅</span>  Weekly BD briefing: Sent Monday 07/28 at 8:00 AM</pre>
+        </div>
+
+      </div><!-- /term-body -->
+    </div><!-- /term-outer -->
+  </div>
+
+  <!-- CTA under terminal -->
+  <div class="container" style="text-align:center;margin-top:3rem;">
+    <p style="font-size:0.92rem;color:var(--term-soft);margin-bottom:1.5rem;">This is what Valeo's team would see every morning. Every alert. Every priority. Every draft outreach.</p>
+    <a href="https://calendly.com/ryan-maxximus/30min" target="_blank" class="btn-primary" style="font-size:0.97rem;padding:0.85rem 1.85rem;">Book a Demo with Ryan →</a>
+  </div>
+</div><!-- /terminal -->
+
+
+<!-- ════════════════════════════════════════════════
+     NEXT STEPS TAB
+════════════════════════════════════════════════ -->
+<div x-show="tab === 'nextsteps'" x-cloak>
+
+  <section class="hero" style="min-height:50vh;">
+    <div class="hero-grid"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-orb o1"></div>
+    <div class="hero-content container" style="max-width:1120px;padding-top:5rem;padding-bottom:4rem;">
+      <div class="hero-eyebrow"><span>●</span> Next Steps</div>
+      <h1 class="hero-headline" style="font-size:clamp(1.8rem,4vw,3rem);">Ready to See Tribune in Valeo's Workflow?</h1>
+      <p class="hero-sub">One 30-minute call. Ryan walks through exactly how the stack maps to Valeo's existing process. No pitch deck. No slides. A live walkthrough.</p>
+      <div class="hero-actions">
+        <a href="https://calendly.com/ryan-maxximus/30min" target="_blank" class="btn-primary" style="font-size:0.97rem;padding:0.85rem 1.85rem;">Book a Call with Ryan →</a>
+        <a href="https://tribuneinc.com" target="_blank" class="btn-outline-white" style="font-size:0.97rem;padding:0.85rem 1.85rem;">View Tribune Platform</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- What to Expect -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">What to Expect</div>
+      <h2 class="section-headline">What Happens in the 30-Minute Call.</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem;">
+        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.75rem;position:relative;overflow:hidden;">
+          <div style="font-size:2rem;font-weight:900;color:var(--crimson);letter-spacing:-0.05em;margin-bottom:0.5rem;opacity:0.3;">01</div>
+          <div style="font-size:1rem;font-weight:700;margin-bottom:0.5rem;">Understand Valeo's Setup</div>
+          <div style="font-size:0.83rem;color:var(--text-soft);line-height:1.65;">Ryan asks about your current CRM, team size, average placement fee, and the roles that take longest to fill. Five minutes of context.</div>
+        </div>
+        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.75rem;">
+          <div style="font-size:2rem;font-weight:900;color:var(--crimson);letter-spacing:-0.05em;margin-bottom:0.5rem;opacity:0.3;">02</div>
+          <div style="font-size:1rem;font-weight:700;margin-bottom:0.5rem;">Live Stack Walkthrough</div>
+          <div style="font-size:0.83rem;color:var(--text-soft);line-height:1.65;">Live demo of the terminal, the follow-up sequences, the BD signal feed, and the morning briefing — mapped to how Valeo actually recruits.</div>
+        </div>
+        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.75rem;">
+          <div style="font-size:2rem;font-weight:900;color:var(--crimson);letter-spacing:-0.05em;margin-bottom:0.5rem;opacity:0.3;">03</div>
+          <div style="font-size:1rem;font-weight:700;margin-bottom:0.5rem;">Clear Next Step</div>
+          <div style="font-size:0.83rem;color:var(--text-soft);line-height:1.65;">If it's a fit, Ryan proposes a specific Phase 1 scope — the exact automations that would go live in the first six weeks and what ROI they'd target.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partnership note -->
+  <section class="section section-alt">
+    <div class="container" style="max-width:760px;">
+      <div class="section-label">Partnership Opportunity</div>
+      <h2 class="section-headline">A Second Conversation Worth Having.</h2>
+      <p style="font-size:1rem;color:var(--text-soft);line-height:1.8;margin-bottom:1.5rem;">
+        Valeo has 20 years of relationships in behavioral health staffing across South Florida. Tribune is expanding into exactly that market. There's a natural conversation about how Valeo's network could accelerate Tribune's growth in behavioral health — and how that creates a unique position for Valeo in the process.
+      </p>
+      <p style="font-size:1rem;color:var(--text-soft);line-height:1.8;margin-bottom:2rem;">
+        If that interests you, let's make time for it. Same link. Different agenda item.
+      </p>
+      <a href="https://calendly.com/ryan-maxximus/30min" target="_blank" class="btn-primary">Talk to Ryan About Partnership →</a>
+    </div>
+  </section>
+
+  <!-- CTA Band -->
+  <section class="cta-band">
+    <div class="container cta-band-inner">
+      <h2>Ready to see it in Valeo's workflow?</h2>
+      <p>Ryan will walk through the full system live. 30 minutes. No pitch deck.</p>
+      <div class="cta-band-actions">
+        <a href="https://calendly.com/ryan-maxximus/30min" target="_blank" class="btn-white">Book a Call with Ryan →</a>
+        <a href="https://tribuneinc.com" target="_blank" class="btn-outline-white">View Tribune Platform</a>
+      </div>
+      <p class="cta-affiliate">
+        Interested in a partnership conversation? Same link — just mention it when you book.<br>
+        <a href="https://calendly.com/ryan-maxximus/30min" target="_blank">Talk to Ryan About Partnership →</a>
+      </p>
+    </div>
+  </section>
+
+</div><!-- /nextsteps -->
+
+</div><!-- /page-body -->
+
+<!-- ════════ FOOTER ════════ -->
+<footer>
+  <p>Confidential — Prepared for Valeo Resources · July 2026</p>
+  <p>© 2026 Tribune Inc. · <a href="https://tribuneinc.com" target="_blank">tribuneinc.com</a></p>
+  <p class="footer-conf">This presentation is intended solely for Valeo Resources leadership.</p>
+</footer>
+
+<script>
+  // Smooth scroll on hash links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+</script>
+</body>
+</html>
