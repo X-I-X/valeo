@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tribune × Valeo Resources — Healthcare Staffing AI Platform</title>
+  <title>Tribune × Valeo Resources - Healthcare Staffing AI Platform</title>
   <meta name="robots" content="noindex, nofollow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -73,8 +73,9 @@
     .site-header.scrolled { box-shadow: 0 1px 20px rgba(0,0,0,0.08); border-color: var(--border); }
     .header-logo {
       display: flex; align-items: center; gap: 0.65rem; cursor: pointer;
-      text-decoration: none;
+      text-decoration: none; transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
     }
+    .header-logo:hover { transform: scale(1.06); }
     .header-logo-text {
       font-size: 0.95rem; font-weight: 800; color: #0f172a;
       letter-spacing: -0.01em; line-height: 1;
@@ -508,7 +509,7 @@
 
 <!-- ════════ HEADER ════════ -->
 <header class="site-header" :class="{ scrolled: scrolled }">
-  <div class="header-logo">
+  <div class="header-logo" @click="tab='overview'; window.scrollTo({top:0,behavior:'smooth'})">
     <svg viewBox="0 0 100 112" xmlns="http://www.w3.org/2000/svg" style="height:32px;width:auto;flex-shrink:0;" aria-label="Tribune">
       <rect x="18" y="10" width="64" height="16" rx="2" fill="#0A0B12"/>
       <polygon points="18,33 46,33 46,86 37,86 18,60" fill="#0A0B12"/>
@@ -564,14 +565,14 @@
 
     <div class="hero-content container" style="max-width:1120px;padding-top:6rem;padding-bottom:5rem;">
       <div class="hero-eyebrow">
-        <span>●</span> Confidential — Prepared for Valeo Resources
+        <span>●</span> Confidential: Prepared for Valeo Resources
       </div>
       <h1 class="hero-headline">
         The Recruiters Win on Relationships.<br>
         <span class="grad-text">Tribune Makes Sure No Relationship Dies.</span>
       </h1>
       <p class="hero-sub">
-        Healthcare recruiting runs on relationships. But the work that protects those relationships — sourcing candidates, following up, managing client accounts — is almost entirely manual. Every hour spent on admin is an hour not spent closing a placement.
+        Healthcare recruiting runs on relationships. But the work that protects those relationships: sourcing candidates, following up, managing client accounts - is almost entirely manual. Every hour spent on admin is an hour not spent closing a placement.
       </p>
       <div class="hero-actions">
         <a href="https://tribuneinc.com" target="_blank" class="btn-primary" style="font-size:0.97rem;padding:0.85rem 1.85rem;">
@@ -614,14 +615,14 @@
     <div class="container">
       <div class="section-label">The Problem</div>
       <h2 class="section-headline">Three Problems That Drain Every Recruiting Team.</h2>
-      <p class="section-sub" style="margin-bottom:2.5rem;">Valeo's team is strong. The relationships are real. The problem is what happens around those relationships — the manual work that consumes the hours that should be spent on placements.</p>
+      <p class="section-sub" style="margin-bottom:2.5rem;">Valeo's team is strong. The relationships are real. The problem is what happens around those relationships: the manual work that consumes the hours that should be spent on placements.</p>
       <div class="prob-grid">
         <div class="prob-card">
           <div class="prob-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           </div>
           <div class="prob-title">The Sourcing Grind</div>
-          <div class="prob-desc">Recruiters spend hours manually searching LinkedIn, job boards, and databases for candidates that match open role profiles. The best candidates are passive — they don't apply. Finding them is manual, slow, and inconsistent.</div>
+          <div class="prob-desc">Recruiters spend hours manually searching LinkedIn, job boards, and databases for candidates that match open role profiles. The best candidates are passive; they don't apply. Finding them is manual, slow, and inconsistent.</div>
         </div>
         <div class="prob-card">
           <div class="prob-icon">
@@ -725,9 +726,9 @@
         get tribuneEarns() { return Math.round(this.additionalRevFromCalc * (this.share / 100)); },
         get hybridTotal() { return this.monthlyFee + Math.round(this.additionalRevFromCalc * (this.hybridShare / 100)); },
         get shareLabel() {
-          if (this.share <= 17) return 'Low — typically paired with $3,000–5,000/mo platform fee';
-          if (this.share <= 30) return 'Standard — no monthly platform fee';
-          return 'High-performance — zero upfront, zero monthly, pure revenue share';
+          if (this.share <= 17) return 'Low, typically paired with $3,000–5,000/mo platform fee';
+          if (this.share <= 30) return 'Standard, no monthly platform fee';
+          return 'High-performance, zero upfront, zero monthly, pure revenue share';
         },
         fmt(n) { return '$' + n.toLocaleString('en-US'); }
       }" style="margin-top:1rem;">
@@ -857,11 +858,11 @@
         </div>
         <div class="intel-card">
           <div class="intel-badge market">Market Signal</div>
-          <p class="intel-text">3 new behavioral health clinics in South Florida posted clinical roles in the last 7 days — all without a Valeo relationship on file. BD outreach drafts are ready for Rob's review.</p>
+          <p class="intel-text">3 new behavioral health clinics in South Florida posted clinical roles in the last 7 days, all without a Valeo relationship on file. BD outreach drafts are ready for Rob's review.</p>
         </div>
         <div class="intel-card">
           <div class="intel-badge retention">Retention Intelligence</div>
-          <p class="intel-text">Candidates placed through LinkedIn outreach have a 31% higher 6-month retention rate than job board sources. This is Valeo's highest-value sourcing channel — and it is currently underweighted in the team's workflow.</p>
+          <p class="intel-text">Candidates placed through LinkedIn outreach have a 31% higher 6-month retention rate than job board sources. This is Valeo's highest-value sourcing channel, and it is currently underweighted in the team's workflow.</p>
         </div>
         <div class="intel-card">
           <div class="intel-badge knowledge">Knowledge Capture</div>
@@ -901,14 +902,14 @@
           <div class="team-avatar">RP</div>
           <div class="team-name">Ryan Poole</div>
           <div class="team-title">Co-Founder &amp; CEO, Tribune Inc.</div>
-          <p class="team-bio">Ryan Poole is a builder and operator based in West Palm Beach, Florida. He co-founded Tribune Inc. to solve the same operational problems he faced running his own AI ventures — too much manual work, not enough organizational intelligence. Before Tribune, Ryan built MaxximusAI, an AI coaching platform. He runs Tribune on the same systems Tribune sells.</p>
+          <p class="team-bio">Ryan Poole is a builder and operator based in West Palm Beach, Florida. 
           <a href="https://www.linkedin.com/in/ryan-poole-wealthcoach/" target="_blank" class="team-linkedin">LinkedIn →</a>
         </div>
         <div class="team-card">
           <div class="team-avatar">JR</div>
-          <div class="team-name">Jeff Reinhold</div>
+          <div class="team-name">Jeffrey R. Reinhold</div>
           <div class="team-title">Co-Founder &amp; CTO, Tribune Inc.</div>
-          <p class="team-bio">Jeff Reinhold is an engineer and systems builder based in West Palm Beach, Florida. He built the AI infrastructure that powers Tribune — the Senate deliberation layer, the Mission Control terminal, and the agent orchestration framework. Before Tribune, Jeff built the Infinite Agent system and the video production pipeline behind multiple AI media ventures. Tribune runs on what Jeff built.</p>
+          <p class="team-bio">Jeffrey R. Reinhold is an engineer and systems builder based in West Palm Beach, Florida. He built the AI infrastructure that powers Tribune: the Senate deliberation layer, the Mission Control terminal, and the agent orchestration framework. Before Tribune, Jeffrey R. built the Infinite Agent system and the video production pipeline behind multiple AI media ventures. Tribune runs on what he built.</p>
           <a href="https://www.linkedin.com/in/jeffreyreinhold/" target="_blank" class="team-linkedin">LinkedIn →</a>
         </div>
       </div>
@@ -940,7 +941,7 @@
     <div class="container">
       <div class="section-label">Solution Architecture</div>
       <h1 style="font-size:clamp(1.9rem,4vw,3rem);font-weight:900;color:var(--text);letter-spacing:-0.04em;line-height:1.1;max-width:700px;margin-bottom:1rem;">Four Layers That Connect Execution to Intelligence.</h1>
-      <p style="font-size:1.05rem;color:var(--text-soft);max-width:560px;line-height:1.7;">Already using a CRM? Tribune doesn't replace it. Tribune turns it into an agentic operating system — layering intelligence and automation on top of the workflows you already have.</p>
+      <p style="font-size:1.05rem;color:var(--text-soft);max-width:560px;line-height:1.7;">Already using a CRM? Tribune doesn't replace it. Tribune turns it into an agentic operating system , layering intelligence and automation on top of the workflows you already have.</p>
     </div>
   </section>
 
@@ -965,7 +966,7 @@
             <div class="layer-connector"></div>
           </div>
           <div>
-            <div class="layer-tech-tag">OpenClaw / Agentic AI — Mission Control Terminal</div>
+            <div class="layer-tech-tag">OpenClaw / Agentic AI: Mission Control Terminal</div>
             <div class="layer-name">Recruiter Intelligence Layer</div>
             <div class="layer-desc">Morning briefings with daily priority list. At-risk placement alerts. Candidate scoring against open roles. Call prep before every client touch. Recruiters stop managing from memory and start managing from a live command center.</div>
           </div>
@@ -978,7 +979,7 @@
           <div>
             <div class="layer-tech-tag" style="color:#3b82f6;background:rgba(59,130,246,0.08);">Knowledge Intelligence Engine</div>
             <div class="layer-name">Talent Intelligence Layer</div>
-            <div class="layer-desc">Valeo's 20 years of placement history becomes a living competitive advantage. Which role types fill fastest? Which candidate sources have the highest 6-month retention? Which BH clinic segments have the highest repeat business? The institutional knowledge compounds — and stays when people move on.</div>
+            <div class="layer-desc">Valeo's 20 years of placement history becomes a living competitive advantage. Which role types fill fastest? Which candidate sources have the highest 6-month retention? Which BH clinic segments have the highest repeat business? The institutional knowledge compounds, and stays when people move on.</div>
           </div>
         </div>
         <div class="layer-item">
@@ -1001,7 +1002,7 @@
     <div class="container">
       <div class="section-label">Implementation</div>
       <h2 class="section-headline">Three Phases. Zero Risk. <span class="grad-text">Immediate ROI.</span></h2>
-      <p class="section-sub">We build in phases — each one delivering measurable ROI before the next begins.</p>
+      <p class="section-sub">We build in phases, each one delivering measurable ROI before the next begins.</p>
       <div class="phase-roadmap">
         <div class="phase-card">
           <div class="phase-num">Phase 1</div>
@@ -1046,13 +1047,18 @@
 <!-- ════════════════════════════════════════════════
      LIVE TERMINAL TAB
 ════════════════════════════════════════════════ -->
-<div x-show="tab === 'terminal'" x-cloak style="background:var(--term-bg);min-height:calc(100vh - 68px);padding:2.5rem 0 4rem;">
-  <div class="container">
-    <div style="margin-bottom:1.5rem;">
-      <div class="section-label" style="color:rgba(196,30,58,0.9);">Live Demo</div>
-      <h2 style="color:#f1f5f9;font-size:clamp(1.4rem,3vw,2rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:0.4rem;">Valeo Operations Terminal</h2>
-      <p style="font-size:0.84rem;color:var(--term-soft);">Simulated live data — representative of what Valeo's team would see each morning.</p>
+<div x-show="tab === 'terminal'" x-cloak>
+  <!-- Terminal page: white wrapper, dark terminal box -->
+  <section style="background:#fff;padding:3.5rem 0 2rem;border-bottom:1px solid var(--border);">
+    <div class="container">
+      <div class="section-label">Live Demo</div>
+      <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:900;color:var(--text);letter-spacing:-0.03em;margin-bottom:0.5rem;">Valeo Operations Terminal</h2>
+      <p style="font-size:0.92rem;color:var(--text-soft);">Simulated live data representative of what Valeo's team would see each morning.</p>
     </div>
+  </section>
+  <div style="background:var(--term-bg);padding:2.5rem 0 4rem;">
+  <div class="container">
+
     <div class="term-outer">
       <!-- Title bar -->
       <div class="term-titlebar">
@@ -1061,7 +1067,7 @@
           <div class="term-dot yellow"></div>
           <div class="term-dot green"></div>
         </div>
-        <div class="term-title-label">valeo-ops-terminal — mission-control</div>
+        <div class="term-title-label">valeo-ops-terminal - mission-control</div>
         <div class="term-live-badge"><div class="live-dot"></div> LIVE</div>
       </div>
       <!-- Tab bar -->
@@ -1112,7 +1118,7 @@
   <span class="t-yellow">⚠  AT-RISK PLACEMENTS (open > 45 days)</span>
   Palm Beach Behavioral Health — Clinical Director — Day 32 — <span class="t-soft">Last contact: 4 days ago</span>
   WPB Psychiatric Associates — RN Psych — Day 47 — <span class="t-soft">Last contact: 7 days ago</span> <span class="t-red">🔴</span>
-  Delray Beach Recovery — Program Director — Day 61 — <span class="t-red">URGENT: Call today</span></pre>
+  Delray Beach Recovery - Program Director - Day 61 - <span class="t-red">URGENT: Call today</span></pre>
         </div>
 
         <!-- Tab 3: BD Intelligence Feed -->
@@ -1193,6 +1199,7 @@
     <p style="font-size:0.92rem;color:var(--term-soft);margin-bottom:1.5rem;">This is what Valeo's team would see every morning. Every alert. Every priority. Every draft outreach.</p>
     <a href="https://tribuneinc.com" target="_blank" class="btn-primary" style="font-size:0.97rem;padding:0.85rem 1.85rem;">Learn More at tribuneinc.com →</a>
   </div>
+  </div><!-- /dark terminal box -->
 </div><!-- /terminal -->
 
 
@@ -1206,7 +1213,7 @@
     <div class="container">
       <div class="section-label">Next Steps</div>
       <h1 style="font-size:clamp(1.9rem,4vw,3rem);font-weight:900;color:var(--text);letter-spacing:-0.04em;line-height:1.1;max-width:700px;margin-bottom:1rem;">The Full Tribune Platform</h1>
-      <p style="font-size:1.05rem;color:var(--text-soft);max-width:560px;line-height:1.7;margin-bottom:2rem;">This presentation was prepared specifically for Valeo Resources. To learn more about Tribune, explore the full platform, or reach out to Ryan and Jeff directly.</p>
+      <p style="font-size:1.05rem;color:var(--text-soft);max-width:560px;line-height:1.7;margin-bottom:2rem;">This presentation was prepared specifically for Valeo Resources. To learn more about Tribune, explore the full platform, or reach out to Ryan and Jeffrey R. Reinhold directly.</p>
       <div style="display:flex;gap:1rem;flex-wrap:wrap;">
         <a href="https://tribuneinc.com" target="_blank" class="btn-primary" style="font-size:0.95rem;">Visit tribuneinc.com →</a>
         <a href="https://tribuneinc.com/builds/" target="_blank" class="btn-outline" style="font-size:0.95rem;">See All Builds →</a>
@@ -1223,12 +1230,12 @@
         <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.75rem;position:relative;overflow:hidden;">
           <div style="font-size:2rem;font-weight:900;color:var(--crimson);letter-spacing:-0.05em;margin-bottom:0.5rem;opacity:0.3;">01</div>
           <div style="font-size:1rem;font-weight:700;margin-bottom:0.5rem;">Complete AI Organizations</div>
-          <div style="font-size:0.83rem;color:var(--text-soft);line-height:1.65;">Tribune doesn't sell tools or subscriptions. It builds a complete AI organization for your business — designed, installed, trained, and handed over on hardware you own.</div>
+          <div style="font-size:0.83rem;color:var(--text-soft);line-height:1.65;">Tribune doesn't sell tools or subscriptions. It builds a complete AI organization for your business , designed, installed, trained, and handed over on hardware you own.</div>
         </div>
         <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.75rem;">
           <div style="font-size:2rem;font-weight:900;color:var(--crimson);letter-spacing:-0.05em;margin-bottom:0.5rem;opacity:0.3;">02</div>
           <div style="font-size:1rem;font-weight:700;margin-bottom:0.5rem;">The Independence Test</div>
-          <div style="font-size:0.83rem;color:var(--text-soft);line-height:1.65;">Five business days, real operations, zero Tribune intervention — mechanical pass or fail. The only exam in the industry a vendor designs to make itself unnecessary.</div>
+          <div style="font-size:0.83rem;color:var(--text-soft);line-height:1.65;">Five business days, real operations, zero Tribune intervention , mechanical pass or fail. The only exam in the industry a vendor designs to make itself unnecessary.</div>
         </div>
         <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.75rem;">
           <div style="font-size:2rem;font-weight:900;color:var(--crimson);letter-spacing:-0.05em;margin-bottom:0.5rem;opacity:0.3;">03</div>
@@ -1245,7 +1252,7 @@
       <div class="section-label" style="justify-content:center;">About Tribune</div>
       <h2 class="section-headline">Built by two builders who run the same system they sell.</h2>
       <p style="font-size:1rem;color:var(--text-soft);line-height:1.8;margin-bottom:2rem;">
-        Tribune was founded by Ryan Poole and Jeff Reinhold, based in West Palm Beach, Florida. They build, train, test, and hand off — then leave. The system stays. The retainer doesn't.
+        Tribune was founded by Ryan Poole and Jeffrey R. Reinhold, based in West Palm Beach, Florida. They build, train, test, and hand off, then leave. The system stays. The retainer doesn't.
       </p>
       <a href="https://tribuneinc.com" target="_blank" class="btn-primary">tribuneinc.com →</a>
     </div>
@@ -1269,7 +1276,7 @@
 
 <!-- ════════ FOOTER ════════ -->
 <footer>
-  <p>Confidential — Prepared for Valeo Resources · July 2026</p>
+  <p>Confidential: Prepared for Valeo Resources · July 2026</p>
   <p>© 2026 Tribune Inc. · <a href="https://tribuneinc.com" target="_blank">tribuneinc.com</a> · <a href="mailto:ryan@tribuneinc.com">ryan@tribuneinc.com</a></p>
   <p class="footer-conf">This presentation is intended solely for Valeo Resources leadership.</p>
 </footer>
