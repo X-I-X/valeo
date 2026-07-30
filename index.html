@@ -353,16 +353,17 @@
 
     /* ─── CALCULATOR ───────────────────────────────── */
     .calc-card {
-      background: #141d2b; border: 1px solid var(--term-border);
+      background: var(--bg-card); border: 1px solid var(--border);
       border-radius: 20px; padding: 2.5rem; max-width: 780px; margin: 0 auto;
+      box-shadow: var(--shadow-lg);
     }
-    .calc-desc { font-size: 0.92rem; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 2rem; }
+    .calc-desc { font-size: 0.92rem; color: var(--text-soft); line-height: 1.7; margin-bottom: 2rem; }
     .slider-group { margin-bottom: 2rem; }
-    .slider-label { font-size: 0.78rem; font-weight: 600; color: rgba(255,255,255,0.7); margin-bottom: 0.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .slider-label { font-size: 0.78rem; font-weight: 600; color: var(--text); margin-bottom: 0.5rem; display: flex; justify-content: space-between; align-items: center; }
     .slider-val { font-family: var(--mono); font-size: 0.9rem; font-weight: 700; color: var(--crimson-mid); }
     input[type=range].calc-slider {
       width: 100%; height: 4px; -webkit-appearance: none; appearance: none;
-      background: var(--term-border); border-radius: 2px; outline: none; cursor: pointer;
+      background: var(--border-mid); border-radius: 2px; outline: none; cursor: pointer;
     }
     input[type=range].calc-slider::-webkit-slider-thumb {
       -webkit-appearance: none; appearance: none;
@@ -375,14 +376,14 @@
       background: var(--crimson); cursor: pointer; border: none;
     }
     .calc-output {
-      background: rgba(0,0,0,0.3); border: 1px solid var(--term-border);
+      background: var(--bg-soft); border: 1px solid var(--border);
       border-radius: 12px; padding: 1.5rem; margin-top: 0.5rem;
     }
-    .calc-output-row { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .calc-output-row { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0; border-bottom: 1px solid var(--border); }
     .calc-output-row:last-child { border-bottom: none; }
-    .calc-output-label { font-size: 0.82rem; color: rgba(255,255,255,0.55); }
-    .calc-output-val { font-family: var(--mono); font-size: 1.1rem; font-weight: 700; color: var(--term-green); }
-    .calc-output-val.annual { font-size: 1.4rem; color: var(--crimson-mid); }
+    .calc-output-label { font-size: 0.82rem; color: var(--text-soft); }
+    .calc-output-val { font-family: var(--mono); font-size: 1.1rem; font-weight: 700; color: var(--crimson); }
+    .calc-output-val.annual { font-size: 1.4rem; color: var(--crimson); }
 
     /* ─── PHASE ROADMAP ─────────────────────────────── */
     .phase-roadmap { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin-top: 2.5rem; }
@@ -469,19 +470,19 @@
     .team-linkedin:hover { text-decoration: underline; }
 
     /* ─── TRIBUNE REVENUE MODEL ─────────────────────────────── */
-    .revenue-tabs { display: flex; gap: 0; border: 1px solid var(--term-border); border-radius: 8px; overflow: hidden; margin-bottom: 1.5rem; width: fit-content; }
+    .revenue-tabs { display: flex; gap: 0; border: 1px solid var(--border-mid); border-radius: 8px; overflow: hidden; margin-bottom: 1.5rem; width: fit-content; }
     .rev-tab-btn {
       padding: 0.5rem 1.25rem; font-family: var(--mono); font-size: 0.75rem;
-      font-weight: 600; color: var(--term-soft); background: transparent; border: none;
+      font-weight: 600; color: var(--text-soft); background: transparent; border: none;
       cursor: pointer; transition: all 0.15s; text-transform: uppercase; letter-spacing: 0.06em;
     }
     .rev-tab-btn.active { background: var(--crimson); color: #fff; }
-    .rev-tab-btn:hover:not(.active) { color: var(--term-text); background: rgba(255,255,255,0.05); }
-    .rev-explainer { background: rgba(0,0,0,0.25); border: 1px solid var(--term-border); border-radius: 10px; padding: 1.25rem; margin-top: 1.5rem; }
+    .rev-tab-btn:hover:not(.active) { color: var(--text); background: var(--bg-soft); }
+    .rev-explainer { background: var(--bg-soft); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; margin-top: 1.5rem; }
     .rev-explainer ul { list-style: none; padding: 0; }
-    .rev-explainer ul li { font-size: 0.78rem; color: rgba(255,255,255,0.55); line-height: 1.7; padding: 0.2rem 0; }
+    .rev-explainer ul li { font-size: 0.78rem; color: var(--text-soft); line-height: 1.7; padding: 0.2rem 0; }
     .rev-explainer ul li::before { content: '→ '; color: var(--crimson); }
-    .slider-hint { font-size: 0.7rem; color: var(--term-soft); margin-top: 0.3rem; font-style: italic; }
+    .slider-hint { font-size: 0.7rem; color: var(--text-dim); margin-top: 0.3rem; font-style: italic; }
 
     /* ─── RESPONSIVE ────────────────────────────────── */
     @media (max-width: 960px) {
@@ -526,7 +527,7 @@
     <button class="tab-btn" :class="{ active: tab === 'nextsteps' }" @click="tab='nextsteps'; window.scrollTo({top:0,behavior:'smooth'})">Next Steps</button>
   </div>
   <div class="header-cta">
-    <a href="https://calendly.com/ryan-maxximus/30min" target="_blank" class="btn-primary" style="font-size:0.82rem;padding:0.5rem 1.1rem;">Talk to Ryan →</a>
+    <a href="https://tribuneinc.com" target="_blank" class="btn-primary" style="font-size:0.82rem;padding:0.5rem 1.1rem;">tribuneinc.com →</a>
   </div>
 </header>
 
@@ -573,8 +574,8 @@
         Healthcare recruiting runs on relationships. But the work that protects those relationships — sourcing candidates, following up, managing client accounts — is almost entirely manual. Every hour spent on admin is an hour not spent closing a placement.
       </p>
       <div class="hero-actions">
-        <a href="https://calendly.com/ryan-maxximus/30min" target="_blank" class="btn-primary" style="font-size:0.97rem;padding:0.85rem 1.85rem;">
-          Talk to Ryan →
+        <a href="https://tribuneinc.com" target="_blank" class="btn-primary" style="font-size:0.97rem;padding:0.85rem 1.85rem;">
+          Learn More at tribuneinc.com →
         </a>
         <a href="https://tribuneinc.com" target="_blank" class="btn-outline-white" style="font-size:0.97rem;padding:0.85rem 1.85rem;">
           View Tribune Platform
@@ -651,10 +652,10 @@
 </div>
 
   <!-- PLACEMENT REVENUE CALCULATOR -->
-  <section class="section" style="background:#0a0e1a;">
+  <section class="section section-alt">
     <div class="container" style="text-align:center;">
       <div class="section-label" style="justify-content:center;">Revenue Calculator</div>
-      <h2 class="section-headline" style="color:#f1f5f9;max-width:640px;margin:0 auto 0.75rem;">Your Placement Revenue Upside</h2>
+      <h2 class="section-headline" style="max-width:640px;margin:0 auto 0.75rem;">Your Placement Revenue Upside</h2>
       <div x-data="{
         recruiters: 5,
         fee: 12000,
@@ -710,11 +711,11 @@
   </section>
 
   <!-- TRIBUNE REVENUE MODEL -->
-  <section class="section" style="background:#0f1521;">
+  <section class="section">
     <div class="container" style="text-align:center;">
       <div class="section-label" style="justify-content:center;">How Tribune Gets Paid</div>
-      <h2 class="section-headline" style="color:#f1f5f9;max-width:640px;margin:0 auto 0.75rem;">Tribune's fee is tied to the value we create.</h2>
-      <p style="font-size:0.92rem;color:rgba(255,255,255,0.6);line-height:1.7;margin-bottom:2rem;max-width:640px;margin-left:auto;margin-right:auto;">The more we automate and the more placements your team closes, the more we earn together.</p>
+      <h2 class="section-headline" style="max-width:640px;margin:0 auto 0.75rem;">Tribune's fee is tied to the value we create.</h2>
+      <p style="font-size:0.92rem;color:var(--text-soft);line-height:1.7;margin-bottom:2rem;max-width:640px;margin-left:auto;margin-right:auto;">The more we automate and the more placements your team closes, the more we earn together.</p>
       <div x-data="{
         revTab: 'performance',
         share: 25,
@@ -891,10 +892,10 @@
   </section>
 
   <!-- TEAM SECTION -->
-  <section class="section" style="background:#0a0e1a;">
+  <section class="section section-alt">
     <div class="container">
       <div class="section-label">Meet the Team</div>
-      <h2 class="section-headline" style="color:#f1f5f9;max-width:640px;">The People Behind Tribune.</h2>
+      <h2 class="section-headline" style="max-width:640px;">The People Behind Tribune.</h2>
       <div class="team-grid">
         <div class="team-card">
           <div class="team-avatar">RP</div>
@@ -917,16 +918,12 @@
   <!-- CTA BAND -->
   <section class="cta-band">
     <div class="container cta-band-inner">
-      <h2>Ready to see it in Valeo's workflow?</h2>
-      <p>Ryan will walk through the full system live. 30 minutes. No pitch deck.</p>
+      <h2>Prepared for Valeo Resources</h2>
+      <p>This presentation was built specifically for Friday's meeting. Visit tribuneinc.com to learn more about the full Tribune platform.</p>
       <div class="cta-band-actions">
-        <a href="https://calendly.com/ryan-maxximus/30min" target="_blank" class="btn-white">Talk to Ryan →</a>
-        <a href="mailto:ryan@tribuneinc.com" class="btn-outline-white">Reach Out to Tribune →</a>
+        <a href="https://tribuneinc.com" target="_blank" class="btn-white">Visit tribuneinc.com →</a>
+        <a href="https://tribuneinc.com/reach-out/" target="_blank" class="btn-outline-white">Reach Out to Tribune →</a>
       </div>
-      <p class="cta-affiliate">
-        There's a second conversation worth having — how Valeo's network could accelerate Tribune's growth in behavioral health. If that interests you, let's make time for it.<br>
-        <a href="https://calendly.com/ryan-maxximus/30min" target="_blank">Talk to Ryan About Partnership →</a>
-      </p>
     </div>
   </section>
 
@@ -1037,11 +1034,11 @@
   <!-- CTA Band -->
   <section class="cta-band">
     <div class="container cta-band-inner">
-      <h2>Ready to see it in Valeo's workflow?</h2>
-      <p>Ryan will walk through the full system live. 30 minutes. No pitch deck.</p>
+      <h2>Prepared for Valeo Resources</h2>
+      <p>This presentation was built specifically for Friday's meeting. Visit tribuneinc.com to learn more about the full Tribune platform.</p>
       <div class="cta-band-actions">
-        <a href="https://calendly.com/ryan-maxximus/30min" target="_blank" class="btn-white">Talk to Ryan →</a>
-        <a href="mailto:ryan@tribuneinc.com" class="btn-outline-white">Reach Out to Tribune →</a>
+        <a href="https://tribuneinc.com" target="_blank" class="btn-white">Visit tribuneinc.com →</a>
+        <a href="https://tribuneinc.com/reach-out/" target="_blank" class="btn-outline-white">Reach Out to Tribune →</a>
       </div>
     </div>
   </section>
@@ -1194,10 +1191,10 @@
     </div><!-- /term-outer -->
   </div>
 
-  <!-- CTA under terminal -->
+  <!-- Terminal footer note -->
   <div class="container" style="text-align:center;margin-top:3rem;">
     <p style="font-size:0.92rem;color:var(--term-soft);margin-bottom:1.5rem;">This is what Valeo's team would see every morning. Every alert. Every priority. Every draft outreach.</p>
-    <a href="https://calendly.com/ryan-maxximus/30min" target="_blank" class="btn-primary" style="font-size:0.97rem;padding:0.85rem 1.85rem;">Talk to Ryan →</a>
+    <a href="https://tribuneinc.com" target="_blank" class="btn-primary" style="font-size:0.97rem;padding:0.85rem 1.85rem;">Learn More at tribuneinc.com →</a>
   </div>
 </div><!-- /terminal -->
 
@@ -1213,68 +1210,61 @@
     <div class="hero-orb o1"></div>
     <div class="hero-content container" style="max-width:1120px;padding-top:5rem;padding-bottom:4rem;">
       <div class="hero-eyebrow"><span>●</span> Next Steps</div>
-      <h1 class="hero-headline" style="font-size:clamp(1.8rem,4vw,3rem);">Ready to See Tribune in Valeo's Workflow?</h1>
-      <p class="hero-sub">One 30-minute call. Ryan walks through exactly how the stack maps to Valeo's existing process. No pitch deck. No slides. A live walkthrough.</p>
+      <h1 class="hero-headline" style="font-size:clamp(1.8rem,4vw,3rem);">The Full Tribune Platform</h1>
+      <p class="hero-sub">This presentation was prepared specifically for Valeo Resources. To learn more about Tribune, explore the full platform, or get in touch with Ryan and Jeff directly, visit tribuneinc.com.</p>
       <div class="hero-actions">
-        <a href="https://calendly.com/ryan-maxximus/30min" target="_blank" class="btn-primary" style="font-size:0.97rem;padding:0.85rem 1.85rem;">Talk to Ryan →</a>
-        <a href="https://tribuneinc.com" target="_blank" class="btn-outline-white" style="font-size:0.97rem;padding:0.85rem 1.85rem;">Reach Out to Tribune →</a>
+        <a href="https://tribuneinc.com" target="_blank" class="btn-primary" style="font-size:0.97rem;padding:0.85rem 1.85rem;">Visit tribuneinc.com →</a>
+        <a href="https://tribuneinc.com/builds/" target="_blank" class="btn-outline-white" style="font-size:0.97rem;padding:0.85rem 1.85rem;">See All Builds →</a>
       </div>
     </div>
   </section>
 
-  <!-- What to Expect -->
+  <!-- What Tribune Builds -->
   <section class="section">
     <div class="container">
-      <div class="section-label">What to Expect</div>
-      <h2 class="section-headline">What Happens in the 30-Minute Call.</h2>
+      <div class="section-label">The Platform</div>
+      <h2 class="section-headline">What Tribune Builds.</h2>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem;">
         <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.75rem;position:relative;overflow:hidden;">
           <div style="font-size:2rem;font-weight:900;color:var(--crimson);letter-spacing:-0.05em;margin-bottom:0.5rem;opacity:0.3;">01</div>
-          <div style="font-size:1rem;font-weight:700;margin-bottom:0.5rem;">Understand Valeo's Setup</div>
-          <div style="font-size:0.83rem;color:var(--text-soft);line-height:1.65;">Ryan asks about your current CRM, team size, average placement fee, and the roles that take longest to fill. Five minutes of context.</div>
+          <div style="font-size:1rem;font-weight:700;margin-bottom:0.5rem;">Complete AI Organizations</div>
+          <div style="font-size:0.83rem;color:var(--text-soft);line-height:1.65;">Tribune doesn't sell tools or subscriptions. It builds a complete AI organization for your business — designed, installed, trained, and handed over on hardware you own.</div>
         </div>
         <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.75rem;">
           <div style="font-size:2rem;font-weight:900;color:var(--crimson);letter-spacing:-0.05em;margin-bottom:0.5rem;opacity:0.3;">02</div>
-          <div style="font-size:1rem;font-weight:700;margin-bottom:0.5rem;">Live Stack Walkthrough</div>
-          <div style="font-size:0.83rem;color:var(--text-soft);line-height:1.65;">Live demo of the terminal, the follow-up sequences, the BD signal feed, and the morning briefing — mapped to how Valeo actually recruits.</div>
+          <div style="font-size:1rem;font-weight:700;margin-bottom:0.5rem;">The Independence Test</div>
+          <div style="font-size:0.83rem;color:var(--text-soft);line-height:1.65;">Five business days, real operations, zero Tribune intervention — mechanical pass or fail. The only exam in the industry a vendor designs to make itself unnecessary.</div>
         </div>
         <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.75rem;">
           <div style="font-size:2rem;font-weight:900;color:var(--crimson);letter-spacing:-0.05em;margin-bottom:0.5rem;opacity:0.3;">03</div>
-          <div style="font-size:1rem;font-weight:700;margin-bottom:0.5rem;">Clear Next Step</div>
-          <div style="font-size:0.83rem;color:var(--text-soft);line-height:1.65;">If it's a fit, Ryan proposes a specific Phase 1 scope — the exact automations that would go live in the first six weeks and what ROI they'd target.</div>
+          <div style="font-size:1rem;font-weight:700;margin-bottom:0.5rem;">Ownership, Literally</div>
+          <div style="font-size:0.83rem;color:var(--text-soft);line-height:1.65;">Hardware on your premises, accounts in your name, repositories in your control from day one. Tribune's access ends. The system doesn't.</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Partnership note -->
+  <!-- Tribune info -->
   <section class="section section-alt">
-    <div class="container" style="max-width:760px;">
-      <div class="section-label">Partnership Opportunity</div>
-      <h2 class="section-headline">A Second Conversation Worth Having.</h2>
-      <p style="font-size:1rem;color:var(--text-soft);line-height:1.8;margin-bottom:1.5rem;">
-        Valeo has 20 years of relationships in behavioral health staffing across South Florida. Tribune is expanding into exactly that market. There's a natural conversation about how Valeo's network could accelerate Tribune's growth in behavioral health — and how that creates a unique position for Valeo in the process.
-      </p>
+    <div class="container" style="max-width:760px;text-align:center;">
+      <div class="section-label" style="justify-content:center;">About Tribune</div>
+      <h2 class="section-headline">Built by two builders who run the same system they sell.</h2>
       <p style="font-size:1rem;color:var(--text-soft);line-height:1.8;margin-bottom:2rem;">
-        If that interests you, let's make time for it. Same link. Different agenda item.
+        Tribune was founded by Ryan Poole and Jeff Reinhold, based in West Palm Beach, Florida. They build, train, test, and hand off — then leave. The system stays. The retainer doesn't.
       </p>
-      <a href="https://calendly.com/ryan-maxximus/30min" target="_blank" class="btn-primary">Talk to Ryan About Partnership →</a>
+      <a href="https://tribuneinc.com" target="_blank" class="btn-primary">tribuneinc.com →</a>
     </div>
   </section>
 
   <!-- CTA Band -->
   <section class="cta-band">
     <div class="container cta-band-inner">
-      <h2>Ready to see it in Valeo's workflow?</h2>
-      <p>Ryan will walk through the full system live. 30 minutes. No pitch deck.</p>
+      <h2>Prepared for Valeo Resources</h2>
+      <p>This site was built specifically for your Friday meeting. To learn more about Tribune and what a build looks like, visit tribuneinc.com.</p>
       <div class="cta-band-actions">
-        <a href="https://calendly.com/ryan-maxximus/30min" target="_blank" class="btn-white">Talk to Ryan →</a>
-        <a href="mailto:ryan@tribuneinc.com" class="btn-outline-white">Reach Out to Tribune →</a>
+        <a href="https://tribuneinc.com" target="_blank" class="btn-white">Visit tribuneinc.com →</a>
+        <a href="https://tribuneinc.com/reach-out/" target="_blank" class="btn-outline-white">Reach Out to Tribune →</a>
       </div>
-      <p class="cta-affiliate">
-        Interested in a partnership conversation? Same link — just mention it when you book.<br>
-        <a href="https://calendly.com/ryan-maxximus/30min" target="_blank">Talk to Ryan About Partnership →</a>
-      </p>
     </div>
   </section>
 
